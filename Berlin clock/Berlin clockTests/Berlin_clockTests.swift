@@ -25,66 +25,46 @@ final class Berlin_clockTests: XCTestCase {
     
     // MARK: - five hours
     
-    func test_five_hours_row_returns_four_lamps_on_when_hours_is_zero() {
+    private func assertFiveHoursRow(hours: Int, expectedLampsOn: Int) {
         let clock = BerlinClock()
-        let lamps = clock.fiveHoursRow(hours: 0)
+        let lamps = clock.fiveHoursRow(hours: hours)
         let numberOfIlluminatedLamps = lamps.filter { $0.isOn }.count
-        XCTAssertEqual(numberOfIlluminatedLamps, 0)
+        XCTAssertEqual(numberOfIlluminatedLamps, expectedLampsOn)
+    }
+    
+    func test_five_hours_row_returns_four_lamps_on_when_hours_is_zero() {
+        assertFiveHoursRow(hours: 0, expectedLampsOn: 0)
     }
     
     func test_five_hours_row_returns_zero_lamps_on_when_hours_is_one() {
-        let clock = BerlinClock()
-        let lamps = clock.fiveHoursRow(hours: 1)
-        let numberOfIlluminatedLamps = lamps.filter { $0.isOn }.count
-        XCTAssertEqual(numberOfIlluminatedLamps, 0)
+        assertFiveHoursRow(hours: 1, expectedLampsOn: 0)
     }
     
     func test_five_hours_row_returns_one_lamp_on_for_five_hours() {
-        let clock = BerlinClock()
-        let lamps = clock.fiveHoursRow(hours: 5)
-        let numberOfIlluminatedLamps = lamps.filter { $0.isOn }.count
-        XCTAssertEqual(numberOfIlluminatedLamps, 1)
+        assertFiveHoursRow(hours: 5, expectedLampsOn: 1)
     }
     
     func test_five_hours_row_returns_one_lamp_on_when_hours_is_eight() {
-        let clock = BerlinClock()
-        let lamps = clock.fiveHoursRow(hours: 8)
-        let numberOfIlluminatedLamps = lamps.filter { $0.isOn }.count
-        XCTAssertEqual(numberOfIlluminatedLamps, 1)
+        assertFiveHoursRow(hours: 8, expectedLampsOn: 1)
     }
     
     func test_five_hours_row_returns_two_lamps_on_when_hours_is_ten() {
-        let clock = BerlinClock()
-        let lamps = clock.fiveHoursRow(hours: 10)
-        let numberOfIlluminatedLamps = lamps.filter { $0.isOn }.count
-        XCTAssertEqual(numberOfIlluminatedLamps, 2)
+        assertFiveHoursRow(hours: 10, expectedLampsOn: 2)
     }
     
     func test_five_hours_row_returns_three_lamps_on_when_hours_is_fifteen() {
-        let clock = BerlinClock()
-        let lamps = clock.fiveHoursRow(hours: 15)
-        let numberOfIlluminatedLamps = lamps.filter { $0.isOn }.count
-        XCTAssertEqual(numberOfIlluminatedLamps, 3)
+        assertFiveHoursRow(hours: 15, expectedLampsOn: 3)
     }
     
     func test_five_hours_row_returns_three_lamps_on_when_hours_is_nineteen() {
-        let clock = BerlinClock()
-        let lamps = clock.fiveHoursRow(hours: 19)
-        let numberOfIlluminatedLamps = lamps.filter { $0.isOn }.count
-        XCTAssertEqual(numberOfIlluminatedLamps, 3)
+        assertFiveHoursRow(hours: 19, expectedLampsOn: 3)
     }
     
     func test_five_hours_row_returns_four_lamps_on_when_hours_is_twenty() {
-        let clock = BerlinClock()
-        let lamps = clock.fiveHoursRow(hours: 20)
-        let numberOfIlluminatedLamps = lamps.filter { $0.isOn }.count
-        XCTAssertEqual(numberOfIlluminatedLamps, 4)
+        assertFiveHoursRow(hours: 20, expectedLampsOn: 4)
     }
     
     func test_five_hours_row_returns_four_lamps_on_when_hours_is_twenty_three() {
-        let clock = BerlinClock()
-        let lamps = clock.fiveHoursRow(hours: 23)
-        let numberOfIlluminatedLamps = lamps.filter { $0.isOn }.count
-        XCTAssertEqual(numberOfIlluminatedLamps, 4)
+        assertFiveHoursRow(hours: 23, expectedLampsOn: 4)
     }
 }
