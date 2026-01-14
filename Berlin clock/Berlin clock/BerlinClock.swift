@@ -10,4 +10,8 @@ struct BerlinClock {
     func secondsLampIluminated(seconds: Int) -> Bool {
         seconds % 2 == 0
     }
+    
+    func fiveHoursRow(hours: Int) {
+        
+    }
 }
