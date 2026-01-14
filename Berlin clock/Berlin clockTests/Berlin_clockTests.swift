@@ -11,5 +11,7 @@ import XCTest
 final class Berlin_clockTests: XCTestCase {
 
   
-
+    func test_seconds_lamp_is_on_when_it_is_even() {
+        let clock = BerlinClock()
+    }
 }
