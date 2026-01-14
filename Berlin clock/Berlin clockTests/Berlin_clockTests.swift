@@ -26,6 +26,6 @@ final class Berlin_clockTests: XCTestCase {
         let clock = BerlinClock()
         let lamps = clock.fiveHoursRow(hours: 5)
         let numberOfIlluminatedLamps = lamps.filter { $0.isOn }.count
-        XCTAssertEqual(lamps.count, 1)
+        XCTAssertEqual(numberOfIlluminatedLamps, 1)
     }
 }
