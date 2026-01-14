@@ -22,8 +22,9 @@ final class Berlin_clockTests: XCTestCase {
         XCTAssertFalse(clock.secondsLampIluminated(seconds: 1))
     }
     
-    func test_five_hours_row_returns_one_lamp_for_five_hours() {
+    func test_five_hours_row_returns_one_lamp_on_for_five_hours() {
         let clock = BerlinClock()
         let lamps = clock.fiveHoursRow(hours: 5)
+        XCTAssertEqual(lamps.count, 1)
     }
 }
