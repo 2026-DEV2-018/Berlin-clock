@@ -67,4 +67,11 @@ final class Berlin_clockTests: XCTestCase {
     func test_five_hours_row_returns_four_lamps_on_when_hours_is_twenty_three() {
         assertFiveHoursRow(hours: 23, expectedLampsOn: 4)
     }
+    
+    // MARK: - One hour
+    
+    func test_one_hours_row_returns_zero_lamps_on_when_hours_is_zero() {
+        let clock = BerlinClock()
+        let lamps = clock.oneHoursRow(hours: 0)
+    }
 }
