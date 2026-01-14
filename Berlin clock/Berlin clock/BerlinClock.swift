@@ -22,6 +22,10 @@ struct BerlinClock {
             return [.red, .red, .off, .off]
         }
         
+        if active == 3 {
+            return [.red, .red, .red, .off]
+        }
+        
         return [.red, .off, .off, .off]
     }
 }
