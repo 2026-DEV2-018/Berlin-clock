@@ -11,7 +11,7 @@ struct BerlinClock {
         seconds % 2 == 0
     }
     
-    func fiveHoursRow(hours: Int) {
-        
+    func fiveHoursRow(hours: Int) -> [Lamp] {
+        return [.off]
     }
 }
