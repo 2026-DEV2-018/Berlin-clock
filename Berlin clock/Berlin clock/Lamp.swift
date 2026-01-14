@@ -16,6 +16,6 @@ enum Lamp {
 extension Lamp {
     
     var isOn: Bool {
-        true
+        false
     }
 }
