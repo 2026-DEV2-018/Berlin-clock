@@ -16,4 +16,9 @@ final class Berlin_clockTests: XCTestCase {
         
         XCTAssertTrue(clock.secondsLampIluminated(seconds: 0))
     }
+    
+    func test_seconds_lamp_is_off_when_seconds_are_odd() {
+        let clock = BerlinClock()
+        XCTAssertFalse(clock.secondsLampIluminated(seconds: 1))
+    }
 }
