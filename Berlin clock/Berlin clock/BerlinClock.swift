@@ -7,29 +7,20 @@
 
 struct BerlinClock {
     
+    let numberOfFiveHourLamps = 4
+    
     func secondsLampIluminated(seconds: Int) -> Bool {
         seconds % 2 == 0
     }
     
     func fiveHoursRow(hours: Int) -> [Lamp] {
-        let active = hours / 5
+        let numberOfActiveLamps = min(hours / 5, numberOfFiveHourLamps)
         
-        if active == 0 {
-            return [.off, .off, .off, .off]
+        var lamps: [Lamp] = Array(repeating: .off, count: numberOfFiveHourLamps)
+        
+        for index in 0 ..< numberOfActiveLamps {
+            lamps[index] = .red
         }
-        
-        if active == 2 {
-            return [.red, .red, .off, .off]
-        }
-        
-        if active == 3 {
-            return [.red, .red, .red, .off]
-        }
-        
-        if active == 4 {
-            return [.red, .red, .red, .red]
-        }
-        
-        return [.red, .off, .off, .off]
+        return lamps
     }
 }
