@@ -9,8 +9,8 @@ import XCTest
 @testable import Berlin_clock
 
 final class Berlin_clockTests: XCTestCase {
-
-  // MARK: - seconds
+    
+    // MARK: - seconds
     
     func test_seconds_lamp_is_on_when_it_is_even() {
         let clock = BerlinClock()
@@ -70,52 +70,38 @@ final class Berlin_clockTests: XCTestCase {
     
     // MARK: - One hour
     
-    func test_one_hours_row_returns_zero_lamps_on_when_hours_is_zero() {
+    private func assertOneHoursRow(hours: Int, expectedLampsOn: Int) {
         let clock = BerlinClock()
-        let lamps = clock.oneHoursRow(hours: 0)
-        let numberOfIlluminatedLamps = lamps.filter(\.isOn).count
-        XCTAssertEqual(numberOfIlluminatedLamps, 0)
+        let lamps = clock.oneHoursRow(hours: hours)
+        let numberOfIlluminatedLamps = lamps.filter { $0.isOn }.count
+        XCTAssertEqual(numberOfIlluminatedLamps, expectedLampsOn)
+    }
+    
+    func test_one_hours_row_returns_zero_lamps_on_when_hours_is_zero() {
+        assertOneHoursRow(hours: 0, expectedLampsOn: 0)
     }
     
     func test_one_hours_row_returns_one_lamp_on_when_hours_is_one() {
-        let clock = BerlinClock()
-        let lamps = clock.oneHoursRow(hours: 1)
-        let numberOfIlluminatedLamps = lamps.filter(\.isOn).count
-        XCTAssertEqual(numberOfIlluminatedLamps, 1)
+        assertOneHoursRow(hours: 1, expectedLampsOn: 1)
     }
     
     func test_one_hours_row_returns_two_lamps_on_when_hours_is_two() {
-        let clock = BerlinClock()
-        let lamps = clock.oneHoursRow(hours: 2)
-        let numberOfIlluminatedLamps = lamps.filter(\.isOn).count
-        XCTAssertEqual(numberOfIlluminatedLamps, 2)
+        assertOneHoursRow(hours: 2, expectedLampsOn: 2)
     }
     
     func test_one_hours_row_returns_three_lamps_on_when_hours_is_three() {
-        let clock = BerlinClock()
-        let lamps = clock.oneHoursRow(hours: 3)
-        let numberOfIlluminatedLamps = lamps.filter(\.isOn).count
-        XCTAssertEqual(numberOfIlluminatedLamps, 3)
+        assertOneHoursRow(hours: 3, expectedLampsOn: 3)
     }
     
     func test_one_hours_row_returns_four_lamps_on_when_hours_is_four() {
-        let clock = BerlinClock()
-        let lamps = clock.oneHoursRow(hours: 4)
-        let numberOfIlluminatedLamps = lamps.filter(\.isOn).count
-        XCTAssertEqual(numberOfIlluminatedLamps, 4)
+        assertOneHoursRow(hours: 4, expectedLampsOn: 4)
     }
     
     func test_one_hours_row_returns_one_lamp_on_when_hours_is_five() {
-        let clock = BerlinClock()
-        let lamps = clock.oneHoursRow(hours: 5)
-        let numberOfIlluminatedLamps = lamps.filter(\.isOn).count
-        XCTAssertEqual(numberOfIlluminatedLamps, 0)
+        assertOneHoursRow(hours: 5, expectedLampsOn: 0)
     }
     
     func test_one_hours_row_returns_three_lamps_on_when_hours_is_twenty_three() {
-        let clock = BerlinClock()
-        let lamps = clock.oneHoursRow(hours: 23)
-        let numberOfIlluminatedLamps = lamps.filter(\.isOn).count
-        XCTAssertEqual(numberOfIlluminatedLamps, 3)
+        assertOneHoursRow(hours: 23, expectedLampsOn: 3)
     }
 }
