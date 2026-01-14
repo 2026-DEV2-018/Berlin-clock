@@ -42,4 +42,11 @@ final class Berlin_clockTests: XCTestCase {
         let numberOfIlluminatedLamps = lamps.filter { $0.isOn }.count
         XCTAssertEqual(numberOfIlluminatedLamps, 2)
     }
+    
+    func test_five_hours_row_returns_three_lamps_on_when_hours_is_fifteen() {
+        let clock = BerlinClock()
+        let lamps = clock.fiveHoursRow(hours: 15)
+        let numberOfIlluminatedLamps = lamps.filter { $0.isOn }.count
+        XCTAssertEqual(numberOfIlluminatedLamps, 3)
+    }
 }
