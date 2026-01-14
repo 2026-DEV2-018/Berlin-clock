@@ -7,4 +7,7 @@
 
 struct BerlinClock {
     
+    func secondsLampIlluminated(seconds: Int) -> Bool {
+        return true
+    }
 }
