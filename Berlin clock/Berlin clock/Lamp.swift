@@ -12,3 +12,10 @@ enum Lamp {
     case red
     case yellow
 }
+
+extension Lamp {
+    
+    var isOn: Bool {
+        true
+    }
+}
