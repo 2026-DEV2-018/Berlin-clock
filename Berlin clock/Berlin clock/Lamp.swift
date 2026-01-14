@@ -16,6 +16,18 @@ enum Lamp {
 extension Lamp {
     
     var isOn: Bool {
-        false
+        if self == .off {
+            return false
+        }
+        
+        if self == .red {
+            return true
+        }
+        
+        if self == .yellow {
+            return true
+        }
+        
+        return false
     }
 }
