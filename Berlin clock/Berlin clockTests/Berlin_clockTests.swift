@@ -174,4 +174,8 @@ final class Berlin_clockTests: XCTestCase {
     func test_five_minutes_row_returns_nine_lamps_on_when_minutes_is_forty_five() {
         assertFiveMinutesRow(minutes: 45, expectedLampsOn: 9)
     }
+    
+    func test_five_minutes_row_returns_ten_lamps_on_when_minutes_is_fifty() {
+        assertFiveMinutesRow(minutes: 50, expectedLampsOn: 10)
+    }
 }
