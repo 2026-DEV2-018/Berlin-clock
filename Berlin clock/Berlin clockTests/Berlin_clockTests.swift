@@ -221,15 +221,17 @@ final class Berlin_clockTests: XCTestCase {
         XCTAssertEqual(lamps.count, 4)
     }
     
-    func test_one_minutes_row_returns_one_lamp_on_when_minutes_is_one() {
-        let lamps = clock.oneMinutesRow(minutes: 1)
+    func assertOneMinutesRow(minutes: Int, expectedLampsOn: Int) {
+        let lamps = clock.oneMinutesRow(minutes: minutes)
         let illuminatedLamps = lamps.filter(\.isOn)
-        XCTAssertEqual(illuminatedLamps.count, 1)
+        XCTAssertEqual(illuminatedLamps.count, expectedLampsOn)
+    }
+    
+    func test_one_minutes_row_returns_one_lamp_on_when_minutes_is_one() {
+        assertOneMinutesRow(minutes: 1, expectedLampsOn: 1)
     }
     
     func test_one_minutes_row_returns_two_lamps_on_when_minutes_is_two() {
-        let lamps = clock.oneMinutesRow(minutes: 2)
-        let illuminatedLamps = lamps.filter(\.isOn)
-        XCTAssertEqual(illuminatedLamps.count, 2)
+        assertOneMinutesRow(minutes: 2, expectedLampsOn: 2)
     }
 }
