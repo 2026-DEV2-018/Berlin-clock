@@ -51,6 +51,10 @@ struct BerlinClock {
             lamps[2] = .red
         }
         
+        if numberOfActiveLamps == 6 {
+            lamps[5] = .red
+        }
+        
         return lamps
     }
 }
