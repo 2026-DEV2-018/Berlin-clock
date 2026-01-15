@@ -47,6 +47,10 @@ struct BerlinClock {
             lamps[index] = .yellow
         }
         
+        if numberOfActiveLamps == 3 {
+            lamps[2] = .red
+        }
+        
         return lamps
     }
 }
