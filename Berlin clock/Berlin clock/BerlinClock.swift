@@ -18,25 +18,12 @@ struct BerlinClock {
     
     func fiveHoursRow(hours: Int) -> [Lamp] {
         let numberOfActiveLamps = min(hours / 5, numberOfFiveHourLamps)
-        
-        var lamps: [Lamp] = Array(repeating: .off, count: numberOfFiveHourLamps)
-        
-        for index in 0 ..< numberOfActiveLamps {
-            lamps[index] = .red
-        }
-        return lamps
+        return lampsRow(totalLamps: numberOfFiveHourLamps, totalActiveLamps: numberOfActiveLamps, lampColor: .red)
     }
     
     func oneHoursRow(hours: Int) -> [Lamp] {
         let numberOfActiveLamps = hours % 5
-        
-        var lamps: [Lamp] = Array(repeating: .off, count: numberOfOneHourLamps)
-        
-        for index in 0 ..< numberOfActiveLamps {
-            lamps[index] = .red
-        }
-        
-        return lamps
+        return lampsRow(totalLamps: numberOfOneHourLamps, totalActiveLamps: numberOfActiveLamps, lampColor: .red)
     }
     
     func fiveMinutesRow(minutes: Int) -> [Lamp] {
@@ -59,11 +46,16 @@ struct BerlinClock {
     
     func oneMinutesRow(minutes: Int) -> [Lamp] {
         let numberOfActiveLamps = minutes % 5
+        return lampsRow(totalLamps: numberOfOneMinuteLamps, totalActiveLamps: numberOfActiveLamps, lampColor: .yellow)
+    }
+    
+    // MARK: - Helper method to create rows
+    
+    private func lampsRow(totalLamps: Int, totalActiveLamps: Int, lampColor: Lamp) -> [Lamp] {
+        var lamps: [Lamp] = Array(repeating: .off, count: totalLamps)
         
-        var lamps: [Lamp] = Array(repeating: .off, count: numberOfOneMinuteLamps)
-        
-        for index in 0 ..< numberOfActiveLamps {
-            lamps[index] = .yellow
+        for index in 0 ..< totalActiveLamps {
+            lamps[index] = lampColor
         }
         
         return lamps
