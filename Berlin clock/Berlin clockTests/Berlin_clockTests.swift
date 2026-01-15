@@ -104,4 +104,10 @@ final class Berlin_clockTests: XCTestCase {
     func test_one_hours_row_returns_three_lamps_on_when_hours_is_twenty_three() {
         assertOneHoursRow(hours: 23, expectedLampsOn: 3)
     }
+    
+    func test_one_hours_row_returns_correct_number_of_lamps() {
+        let clock = BerlinClock()
+        let lamps = clock.oneHoursRow(hours: 0)
+        XCTAssertEqual(lamps.count, 4)
+    }
 }
