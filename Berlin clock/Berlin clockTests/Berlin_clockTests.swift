@@ -187,7 +187,7 @@ final class Berlin_clockTests: XCTestCase {
     
     func test_five_minutes_row_returns_third_lamp_red_when_minutes_is_fifteen() {
         let lamps = clock.fiveMinutesRow(minutes: 15)
-        let thirdLamp = lamps[3]
+        let thirdLamp = lamps[2]
         XCTAssertTrue(thirdLamp == .red)
     }
 }
