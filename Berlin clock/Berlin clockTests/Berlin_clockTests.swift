@@ -234,4 +234,8 @@ final class Berlin_clockTests: XCTestCase {
     func test_one_minutes_row_returns_two_lamps_on_when_minutes_is_two() {
         assertOneMinutesRow(minutes: 2, expectedLampsOn: 2)
     }
+    
+    func test_one_minutes_row_returns_three_lamps_on_when_minutes_is_three() {
+        assertOneMinutesRow(minutes: 3, expectedLampsOn: 3)
+    }
 }
