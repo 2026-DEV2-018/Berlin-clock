@@ -128,4 +128,11 @@ final class Berlin_clockTests: XCTestCase {
         let lamps = clock.fiveMinutesRow(minutes: 0)
         XCTAssertEqual(lamps.count, 11)
     }
+    
+    func test_five_minutes_row_returns_zero_lamps_on_when_mintues_is_zero() {
+        let lamps = clock.fiveMinutesRow(minutes: 0)
+        XCTAssertEqual(lamps.count, 0)
+    }
+    
+    
 }
