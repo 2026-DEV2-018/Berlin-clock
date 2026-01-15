@@ -48,12 +48,6 @@ struct BerlinClock {
     // MARK: - Helper method to create rows
     
     private func lampsRow(totalLamps: Int, totalActiveLamps: Int, lampColor: Lamp) -> [Lamp] {
-        var lamps: [Lamp] = Array(repeating: .off, count: totalLamps)
-        
-        for index in 0 ..< totalActiveLamps {
-            lamps[index] = lampColor
-        }
-        
-        return lamps
+        return (0..<totalLamps).map { $0 < totalActiveLamps ? lampColor : .off }
     }
 }
