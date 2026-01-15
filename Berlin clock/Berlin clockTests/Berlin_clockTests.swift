@@ -202,4 +202,17 @@ final class Berlin_clockTests: XCTestCase {
         let ninthLamp = lamps[8]
         XCTAssertTrue(ninthLamp == .red)
     }
+    
+    func test_five_minutes_row_has_red_lamp_on_every_third_position_for_illuminated_lamps() {
+        let lamps = clock.fiveMinutesRow(minutes: 55)
+        let illuminatedLamps = lamps.filter { $0.isOn }
+        
+        let thirdLamp = illuminatedLamps[2]
+        let sixtLamp = illuminatedLamps[5]
+        let ninthLamp = illuminatedLamps[8]
+        
+        XCTAssertTrue(thirdLamp == .red)
+        XCTAssertTrue(sixtLamp == .red)
+        XCTAssertTrue(ninthLamp == .red)
+    }
 }
