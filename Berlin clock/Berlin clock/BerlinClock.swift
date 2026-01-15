@@ -36,4 +36,8 @@ struct BerlinClock {
         
         return lamps
     }
+    
+    func fiveMinutesRow(minutes: Int) -> [Lamp] {
+        return []
+    }
 }
