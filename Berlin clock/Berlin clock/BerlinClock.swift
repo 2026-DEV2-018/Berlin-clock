@@ -41,18 +41,16 @@ struct BerlinClock {
     func fiveMinutesRow(minutes: Int) -> [Lamp] {
         let numberOfActiveLamps = minutes / 5
         
-        var lamps: [Lamp] = Array(Array(repeating: .off, count: numberOfFiveMinuteLamps))
+        var lamps: [Lamp] = Array(repeating: .off, count: numberOfFiveMinuteLamps)
         
         for index in 0 ..< numberOfActiveLamps {
             lamps[index] = .yellow
         }
         
-        if numberOfActiveLamps == 3 {
-            lamps[2] = .red
-        }
-        
-        if numberOfActiveLamps == 6 {
-            lamps[5] = .red
+        for index in 0 ..< numberOfActiveLamps {
+            if (index + 1) % 3 == 0 {
+                lamps[index] = .red
+            }
         }
         
         return lamps
