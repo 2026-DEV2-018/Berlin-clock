@@ -7,10 +7,10 @@
 
 import Foundation
 
-enum Lamp {
-    case off
-    case red
-    case yellow
+enum Lamp: String {
+    case off = "O"
+    case red = "R"
+    case yellow = "Y"
 }
 
 extension Lamp {
