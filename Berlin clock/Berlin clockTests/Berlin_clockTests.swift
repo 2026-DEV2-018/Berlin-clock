@@ -254,4 +254,11 @@ final class Berlin_clockTests: XCTestCase {
     func test_one_minutes_row_returns_four_lamps_on_when_minutes_is_fifty_nine() {
         assertOneMinutesRow(minutes: 59, expectedLampsOn: 4)
     }
+    
+    // MARK: - Time row order
+    
+    func test_given_a_date_with_midnight_hours_the_order_of_five_hour_row_is_correct() {
+        let midnight = Calendar.current.startOfDay(for: Date())
+        let clock = BerlinClock(date: midnight)
+    }
 }
