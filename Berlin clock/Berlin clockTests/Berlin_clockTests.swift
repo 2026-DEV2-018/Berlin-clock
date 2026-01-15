@@ -131,7 +131,8 @@ final class Berlin_clockTests: XCTestCase {
     
     func test_five_minutes_row_returns_zero_lamps_on_when_mintues_is_zero() {
         let lamps = clock.fiveMinutesRow(minutes: 0)
-        XCTAssertEqual(lamps.count, 0)
+        let numberOfIlluminatedLamps = lamps.filter(\.isOn).count
+        XCTAssertEqual(numberOfIlluminatedLamps, 0)
     }
     
     
