@@ -28,16 +28,11 @@ struct BerlinClock {
     
     func fiveMinutesRow(minutes: Int) -> [Lamp] {
         let numberOfActiveLamps = minutes / 5
+        let lamps = lampsRow(totalLamps: numberOfFiveMinuteLamps, totalActiveLamps: numberOfActiveLamps, lampColor: .yellow)
         
-        var lamps = lampsRow(totalLamps: numberOfFiveMinuteLamps, totalActiveLamps: numberOfActiveLamps, lampColor: .yellow)
-        
-        for index in 0 ..< numberOfActiveLamps {
-            if (index + 1) % 3 == 0 {
-                lamps[index] = .red
-            }
+        return lamps.enumerated().map { index, lamp in
+            (index + 1) % 3 == 0 && lamp.isOn ? .red : lamp
         }
-        
-        return lamps
     }
     
     func oneMinutesRow(minutes: Int) -> [Lamp] {
