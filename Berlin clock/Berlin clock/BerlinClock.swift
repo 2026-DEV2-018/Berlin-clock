@@ -57,6 +57,12 @@ struct BerlinClock {
     }
     
     func oneMinutesRow(minutes: Int) -> [Lamp] {
+        let numberOfActiveLamps = minutes % 5
+        
+        if numberOfActiveLamps == 1 {
+            return [.yellow, .off, .off, .off]
+        }
+        
         return [.off, .off, .off, .off]
     }
 }
