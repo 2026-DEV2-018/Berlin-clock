@@ -5,12 +5,16 @@
 //  Created by 2026-DEV2-018 on 14/01/2026.
 //
 
+import Foundation
+
 struct BerlinClock {
     
     let numberOfFiveHourLamps = 4
     let numberOfOneHourLamps = 4
     let numberOfFiveMinuteLamps = 11
     let numberOfOneMinuteLamps = 4
+    
+    let date: Date
     
     func secondsLampIluminated(seconds: Int) -> Bool {
         seconds % 2 == 0
