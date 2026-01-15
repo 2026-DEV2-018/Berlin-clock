@@ -226,4 +226,10 @@ final class Berlin_clockTests: XCTestCase {
         let illuminatedLamps = lamps.filter(\.isOn)
         XCTAssertEqual(illuminatedLamps.count, 1)
     }
+    
+    func test_one_minutes_row_returns_two_lamps_on_when_minutes_is_two() {
+        let lamps = clock.oneMinutesRow(minutes: 2)
+        let illuminatedLamps = lamps.filter(\.isOn)
+        XCTAssertEqual(illuminatedLamps.count, 2)
+    }
 }
