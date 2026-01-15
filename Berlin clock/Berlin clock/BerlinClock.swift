@@ -63,6 +63,10 @@ struct BerlinClock {
             return [.yellow, .off, .off, .off]
         }
         
+        if numberOfActiveLamps == 2 {
+            return [.yellow, .yellow, .off, .off]
+        }
+        
         return [.off, .off, .off, .off]
     }
 }
