@@ -190,4 +190,10 @@ final class Berlin_clockTests: XCTestCase {
         let thirdLamp = lamps[2]
         XCTAssertTrue(thirdLamp == .red)
     }
+    
+    func test_five_minutes_row_returns_sixt_lamp_red_when_minutes_is_thirty() {
+        let lamps = clock.fiveMinutesRow(minutes: 30)
+        let sixthLamp = lamps[5]
+        XCTAssertTrue(sixthLamp == .red)
+    }
 }
