@@ -220,4 +220,10 @@ final class Berlin_clockTests: XCTestCase {
         let lamps = clock.oneMinutesRow(minutes: 0)
         XCTAssertEqual(lamps.count, 4)
     }
+    
+    func test_one_minutes_row_returns_one_lamp_on_when_minutes_is_one() {
+        let lamps = clock.oneMinutesRow(minutes: 1)
+        let illuminatedLamps = lamps.filter(\.isOn)
+        XCTAssertEqual(illuminatedLamps.count, 1)
+    }
 }
