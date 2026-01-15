@@ -196,4 +196,10 @@ final class Berlin_clockTests: XCTestCase {
         let sixthLamp = lamps[5]
         XCTAssertTrue(sixthLamp == .red)
     }
+    
+    func test_five_minutes_row_returns_ninth_lamp_red_when_minutes_is_forty_five() {
+        let lamps = clock.fiveMinutesRow(minutes: 45)
+        let ninthLamp = lamps[8]
+        XCTAssertTrue(ninthLamp == .red)
+    }
 }
