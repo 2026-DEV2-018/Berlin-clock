@@ -217,6 +217,7 @@ final class Berlin_clockTests: XCTestCase {
     // MARK: - One minute
     
     func test_one_minutes_row_returns_correct_number_of_lamps() {
-        let lamps = clock.oneMinutesRow()
+        let lamps = clock.oneMinutesRow(minutes: 0)
+        XCTAssertEqual(lamps.count, 4)
     }
 }
