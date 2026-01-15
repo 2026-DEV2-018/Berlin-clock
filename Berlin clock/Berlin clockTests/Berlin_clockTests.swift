@@ -214,5 +214,11 @@ final class Berlin_clockTests: XCTestCase {
         XCTAssertTrue(thirdLamp == .red)
         XCTAssertTrue(sixtLamp == .red)
         XCTAssertTrue(ninthLamp == .red)
+        
+        let redLampsIndices = illuminatedLamps.enumerated().compactMap { index, lamp in
+            lamp == .red ? index : nil
+        }
+        
+        XCTAssertEqual(redLampsIndices, [2, 5, 8])
     }
 }
