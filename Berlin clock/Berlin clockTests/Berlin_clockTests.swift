@@ -68,6 +68,12 @@ final class Berlin_clockTests: XCTestCase {
         assertFiveHoursRow(hours: 23, expectedLampsOn: 4)
     }
     
+    func test_five_hours_row_returns_correct_number_of_lamps() {
+        let clock = BerlinClock()
+        let lamps = clock.fiveHoursRow(hours: 0)
+        XCTAssertEqual(lamps.count, 4)
+    }
+    
     // MARK: - One hour
     
     private func assertOneHoursRow(hours: Int, expectedLampsOn: Int) {
