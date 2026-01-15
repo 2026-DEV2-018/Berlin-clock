@@ -10,23 +10,31 @@ import XCTest
 
 final class Berlin_clockTests: XCTestCase {
     
+    private var clock: BerlinClock!
+    
+    override func setUp() {
+        super.setUp()
+        clock = BerlinClock()
+    }
+    
+    override func tearDown() {
+        clock = nil
+        super.tearDown()
+    }
+    
     // MARK: - seconds
     
     func test_seconds_lamp_is_on_when_it_is_even() {
-        let clock = BerlinClock()
-        
         XCTAssertTrue(clock.secondsLampIluminated(seconds: 0))
     }
     
     func test_seconds_lamp_is_off_when_seconds_are_odd() {
-        let clock = BerlinClock()
         XCTAssertFalse(clock.secondsLampIluminated(seconds: 1))
     }
     
     // MARK: - five hours
     
     private func assertFiveHoursRow(hours: Int, expectedLampsOn: Int) {
-        let clock = BerlinClock()
         let lamps = clock.fiveHoursRow(hours: hours)
         let numberOfIlluminatedLamps = lamps.filter { $0.isOn }.count
         XCTAssertEqual(numberOfIlluminatedLamps, expectedLampsOn)
@@ -69,7 +77,6 @@ final class Berlin_clockTests: XCTestCase {
     }
     
     func test_five_hours_row_returns_correct_number_of_lamps() {
-        let clock = BerlinClock()
         let lamps = clock.fiveHoursRow(hours: 0)
         XCTAssertEqual(lamps.count, 4)
     }
@@ -77,7 +84,6 @@ final class Berlin_clockTests: XCTestCase {
     // MARK: - One hour
     
     private func assertOneHoursRow(hours: Int, expectedLampsOn: Int) {
-        let clock = BerlinClock()
         let lamps = clock.oneHoursRow(hours: hours)
         let numberOfIlluminatedLamps = lamps.filter { $0.isOn }.count
         XCTAssertEqual(numberOfIlluminatedLamps, expectedLampsOn)
@@ -112,7 +118,6 @@ final class Berlin_clockTests: XCTestCase {
     }
     
     func test_one_hours_row_returns_correct_number_of_lamps() {
-        let clock = BerlinClock()
         let lamps = clock.oneHoursRow(hours: 0)
         XCTAssertEqual(lamps.count, 4)
     }
