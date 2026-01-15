@@ -142,7 +142,7 @@ final class Berlin_clockTests: XCTestCase {
     }
     
     func test_five_minutes_row_returns_two_lamp_on_when_mintues_is_ten() {
-        let lamps = clock.fiveMinutesRow(minutes: 5)
+        let lamps = clock.fiveMinutesRow(minutes: 10)
         let numberOfIlluminatedLamps = lamps.filter(\.isOn).count
         XCTAssertEqual(numberOfIlluminatedLamps, 2)
     }
