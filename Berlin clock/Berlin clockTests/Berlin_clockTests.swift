@@ -206,15 +206,7 @@ final class Berlin_clockTests: XCTestCase {
     func test_five_minutes_row_has_red_lamp_on_every_third_position_for_illuminated_lamps() {
         let lamps = clock.fiveMinutesRow(minutes: 55)
         let illuminatedLamps = lamps.filter { $0.isOn }
-        
-        let thirdLamp = illuminatedLamps[2]
-        let sixtLamp = illuminatedLamps[5]
-        let ninthLamp = illuminatedLamps[8]
-        
-        XCTAssertTrue(thirdLamp == .red)
-        XCTAssertTrue(sixtLamp == .red)
-        XCTAssertTrue(ninthLamp == .red)
-        
+
         let redLampsIndices = illuminatedLamps.enumerated().compactMap { index, lamp in
             lamp == .red ? index : nil
         }
