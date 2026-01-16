@@ -15,7 +15,9 @@ struct BerlinClock {
     let numberOfOneMinuteLamps = 4
     
     func secondsLampIluminated(seconds: Int) -> Bool {
-        seconds % 2 == 0
+        guard seconds >= 0 else { return false }
+        
+        return seconds % 2 == 0
     }
     
     func fiveHoursRow(hours: Int) -> [Lamp] {
