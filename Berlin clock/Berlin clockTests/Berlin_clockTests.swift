@@ -14,7 +14,7 @@ final class Berlin_clockTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        clock = BerlinClock(date: Date())
+        clock = BerlinClock()
     }
     
     override func tearDown() {
@@ -259,7 +259,7 @@ final class Berlin_clockTests: XCTestCase {
     
     func test_given_a_date_with_midnight_hours_the_order_of_five_hour_row_is_correct() {
         let midnight = Calendar.current.startOfDay(for: Date())
-        let clock = BerlinClock(date: midnight)
+        let clock = BerlinClock()
         let hour = Calendar.current.component(.hour, from: midnight)
         
         let lamps = clock.fiveHoursRow(hours: hour)

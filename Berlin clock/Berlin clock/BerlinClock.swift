@@ -14,8 +14,6 @@ struct BerlinClock {
     let numberOfFiveMinuteLamps = 11
     let numberOfOneMinuteLamps = 4
     
-    let date: Date
-    
     func secondsLampIluminated(seconds: Int) -> Bool {
         seconds % 2 == 0
     }
