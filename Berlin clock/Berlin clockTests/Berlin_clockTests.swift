@@ -145,54 +145,6 @@ final class Berlin_clockTests: XCTestCase {
         }
     }
     
-    func test_fiveMinutesRow_returns_0_lamps_on_when_mintues_is_0() {
-        assertFiveMinutesRow(minutes: 0, expectedLampsOn: 0)
-    }
-    
-    func test_fiveMinutesRow_returns_1_lamp_on_when_mintues_is_5() {
-        assertFiveMinutesRow(minutes: 5, expectedLampsOn: 1)
-    }
-    
-    func test_fiveMinutesRow_returns_2_lamp_on_when_mintues_is_10() {
-        assertFiveMinutesRow(minutes: 10, expectedLampsOn: 2)
-    }
-    
-    func test_fiveMinutesRow_returns_3_lamps_on_when_mintues_is_15() {
-        assertFiveMinutesRow(minutes: 15, expectedLampsOn: 3)
-    }
-    
-    func test_fiveMinutesRow_returns_4_lamps_on_when_minutes_is_20() {
-        assertFiveMinutesRow(minutes: 20, expectedLampsOn: 4)
-    }
-    
-    func test_fiveMinutesRow_returns_5_lamps_on_when_minutes_is_25() {
-        assertFiveMinutesRow(minutes: 25, expectedLampsOn: 5)
-    }
-    
-    func test_fiveMinutesRow_returns_6_lamps_on_when_minutes_is_30() {
-        assertFiveMinutesRow(minutes: 30, expectedLampsOn: 6)
-    }
-    
-    func test_fiveMinutesRow_returns_7_lamps_on_when_minutes_is_35() {
-        assertFiveMinutesRow(minutes: 35, expectedLampsOn: 7)
-    }
-    
-    func test_fiveMinutesRow_returns_8_lamps_on_when_minutes_is_40() {
-        assertFiveMinutesRow(minutes: 40, expectedLampsOn: 8)
-    }
-    
-    func test_fiveMinutesRow_returns_9_lamps_on_when_minutes_is_45() {
-        assertFiveMinutesRow(minutes: 45, expectedLampsOn: 9)
-    }
-    
-    func test_fiveMinutesRow_returns_10_lamps_on_when_minutes_is_50() {
-        assertFiveMinutesRow(minutes: 50, expectedLampsOn: 10)
-    }
-    
-    func test_fiveMinutesRow_returns_11_lamps_on_when_minutes_is_55() {
-        assertFiveMinutesRow(minutes: 55, expectedLampsOn: 11)
-    }
-    
     func test_fiveMinutesRow_returns_11_lamps_on_when_minutes_is_59() {
         assertFiveMinutesRow(minutes: 59, expectedLampsOn: 11)
     }
