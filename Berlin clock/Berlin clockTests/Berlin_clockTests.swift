@@ -26,17 +26,11 @@ final class Berlin_clockTests: XCTestCase {
     
     func test_seconds_lamp_is_on_when_it_is_even() {
         XCTAssertTrue(clock.isSecondsLampIluminated(seconds: 0))
+        XCTAssertTrue(clock.isSecondsLampIluminated(seconds: 58))
     }
     
     func test_seconds_lamp_is_off_when_seconds_are_odd() {
         XCTAssertFalse(clock.isSecondsLampIluminated(seconds: 1))
-    }
-    
-    func test_seconds_lamp_is_off_when_seconds_is_58() {
-        XCTAssertTrue(clock.isSecondsLampIluminated(seconds: 58))
-    }
-    
-    func test_seconds_lamp_is_off_when_seconds_is_59() {
         XCTAssertFalse(clock.isSecondsLampIluminated(seconds: 59))
     }
     
@@ -209,7 +203,7 @@ final class Berlin_clockTests: XCTestCase {
     private func assertLampRow(for actualLamps: [Lamp], expectedLamps: [Lamp], rowName: String, time: String) {
         XCTAssertEqual(actualLamps,
                        expectedLamps,
-                       "\(name) is icorrect for \(time), got: \(actualLamps.map { $0.rawValue } ), expected: \(expectedLamps.map { $0.rawValue })")
+                       "\(name) is incorrect for \(time), got: \(actualLamps.map { $0.rawValue } ), expected: \(expectedLamps.map { $0.rawValue })")
     }
     
     // MARK: - Full Berlin clock
@@ -237,7 +231,7 @@ final class Berlin_clockTests: XCTestCase {
         
         assertLampRow(for: oneMinuteLamps, expectedLamps: expectedOneMinuteLamps, rowName: "oneMinutesRow", time: time)
         
-        XCTAssertTrue(isSecondsLampIlumminated, "secondLampIlluminated is incorrect for \(time), expected: true but got \(isSecondsLampIlumminated)")
+        XCTAssertTrue(isSecondsLampIlumminated, "isSecondsLampIlluminated is incorrect for \(time), expected: true but got \(isSecondsLampIlumminated)")
     }
     
     // MARK: - Negative values, should never happen but better safe than sorry (eg user input in a later stadium)
@@ -264,6 +258,6 @@ final class Berlin_clockTests: XCTestCase {
         
         assertLampRow(for: oneMinuteLamps, expectedLamps: expectedOneMinuteLamps, rowName: "oneMinutesRow", time: time)
         
-        XCTAssertFalse(isSecondsLampIlumminated, "secondLampIlluminated is incorrect for \(time), expected: false but got \(isSecondsLampIlumminated)")
+        XCTAssertFalse(isSecondsLampIlumminated, "secondsLampIlluminated is incorrect for \(time), expected: false but got \(isSecondsLampIlumminated)")
     }
 }
