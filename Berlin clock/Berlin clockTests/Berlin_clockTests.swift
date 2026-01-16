@@ -250,4 +250,33 @@ final class Berlin_clockTests: XCTestCase {
                        "oneMinutesRow is incorrect for 9:47:24, got: \(oneMinuteLamps.map { $0.rawValue } ), expected: \(expectedOneMinuteOrder.map { $0.rawValue })")
         XCTAssertTrue(isSecondsLampIlumminated, "secondLampIlluminated is incorrect for 9:47:24, expected: true but got \(isSecondsLampIlumminated)")
     }
+    
+    // MARK: - Negative values, should never happen but better safe than sorry (eg user input in a later stadium)
+    
+    func test_full_berlin_clock_negative_time_values_returns_all_lamps_off() {
+        let fiveHourLamps = clock.fiveHoursRow(hours: -23)
+        let onehourLamps = clock.oneHoursRow(hours: -23)
+        let fiveMinuteLamps = clock.fiveMinutesRow(minutes: -59)
+        let oneMinuteLamps = clock.oneMinutesRow(minutes: -59)
+        let isSecondsLampIlumminated = clock.secondsLampIluminated(seconds: -10)
+        
+        let expectedFiveHourOrder: [Lamp] = [.off, .off, .off, .off]
+        let expectedOneHourOrder: [Lamp] = [.off, .off, .off, .off]
+        let expectedFiveMinuteOrder: [Lamp] = [.off, .off, .off, .off, .off, .off, .off, .off, .off, .off, .off]
+        let expectedOneMinuteOrder: [Lamp] = [.off, .off, .off, .off]
+        
+        XCTAssertEqual(fiveHourLamps,
+                       expectedFiveHourOrder,
+                       "fiveHoursRow is icorrect for -23:59:10, got: \(fiveHourLamps.map { $0.rawValue } ), expected: \(expectedFiveHourOrder.map { $0.rawValue })")
+        XCTAssertEqual(onehourLamps,
+                       expectedOneHourOrder,
+                       "oneHoursRow is incorrect for -23:59:10, got: \(onehourLamps.map { $0.rawValue } ), expected: \(expectedOneHourOrder.map { $0.rawValue })")
+        XCTAssertEqual(fiveMinuteLamps,
+                       expectedFiveMinuteOrder,
+                       "fiveMinutesRow is incorrect for -23:59:10, got: \(fiveMinuteLamps.map { $0.rawValue } ), expected: \(expectedFiveMinuteOrder.map { $0.rawValue })")
+        XCTAssertEqual(oneMinuteLamps,
+                       expectedOneMinuteOrder,
+                       "oneMinutesRow is incorrect for -23:59:10, got: \(oneMinuteLamps.map { $0.rawValue } ), expected: \(expectedOneMinuteOrder.map { $0.rawValue })")
+        XCTAssertFalse(isSecondsLampIlumminated, "secondLampIlluminated is incorrect for -23:59:10, expected: false but got \(isSecondsLampIlumminated)")
+    }
 }
