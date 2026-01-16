@@ -132,7 +132,10 @@ final class Berlin_clockTests: XCTestCase {
     private func assertFiveMinutesRow(minutes: Int, expectedLampsOn: Int) {
         let lamps = clock.fiveMinutesRow(minutes: minutes)
         let numberOfIlluminatedLamps = lamps.filter(\.isOn).count
-        XCTAssertEqual(numberOfIlluminatedLamps, expectedLampsOn)
+        
+        XCTAssertEqual(numberOfIlluminatedLamps,
+                       expectedLampsOn,
+                       "fiveMinutesRow failed for \nminutes: \(minutes) \nexpected: \(expectedLampsOn) illuminated lamp\(expectedLampsOn > 1 ? "s" : "") \ngot: \(numberOfIlluminatedLamps)")
     }
     
     func test_fiveMinutesRow_returns_correct_number_of_lamps_on_for_every_multiplication_of_five() {
