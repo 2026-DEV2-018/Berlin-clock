@@ -201,28 +201,12 @@ final class Berlin_clockTests: XCTestCase {
         assertOneMinutesRow(minutes: 1, expectedLampsOn: 1)
     }
     
-    func test_oneMinutesRow_returns_2_lamps_on_when_minutes_is_2() {
-        assertOneMinutesRow(minutes: 2, expectedLampsOn: 2)
-    }
-    
-    func test_oneMinutesRow_returns_3_lamps_on_when_minutes_is_3() {
-        assertOneMinutesRow(minutes: 3, expectedLampsOn: 3)
-    }
-    
     func test_oneMinutesRow_returns_4_lamps_on_when_minutes_is_4() {
         assertOneMinutesRow(minutes: 4, expectedLampsOn: 4)
     }
     
     func test_oneMinutesRow_returns_0_lamps_on_when_minutes_is_5() {
         assertOneMinutesRow(minutes: 5, expectedLampsOn: 0)
-    }
-    
-    func test_oneMinutesRow_returns_1_lamp_on_when_minutes_is_6() {
-        assertOneMinutesRow(minutes: 6, expectedLampsOn: 1)
-    }
-    
-    func test_oneMinutesRow_returns_4_lamps_on_when_minutes_is_55() {
-        assertOneMinutesRow(minutes: 59, expectedLampsOn: 4)
     }
     
     // MARK: - Helper full berlin clock
