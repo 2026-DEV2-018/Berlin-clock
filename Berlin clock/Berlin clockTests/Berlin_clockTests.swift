@@ -257,5 +257,23 @@ final class Berlin_clockTests: XCTestCase {
     
     // MARK: - Time row order
     
-    
+    func test_full_berlin_clock_with_time_nine_hours_forty_seven_minutes_twenty_four_seconds_all_rows_have_the_correct_lamp_order() {
+        
+        let fiveHourLamps = clock.fiveHoursRow(hours: 9)
+        let onehourLamps = clock.oneHoursRow(hours: 9)
+        let fiveMinuteLamps = clock.fiveMinutesRow(minutes: 47)
+        let oneMinuteLamps = clock.oneMinutesRow(minutes: 47)
+        let isSecondsLampIlumminated = clock.secondsLampIluminated(seconds: 24)
+        
+        let expectedFiveHourOrder: [Lamp] = [.red, .off, .off, .off]
+        let expectedOneHourOrder: [Lamp] = [.red, .red, .red, .red]
+        let expectedFiveMinuteOrder: [Lamp] = [.yellow, .yellow, .red, .yellow, .yellow, .red, .yellow, .yellow, .red, .off, .off]
+        let expectedOneMinuteOrder: [Lamp] = [.yellow, .yellow, .off, .off]
+        
+        XCTAssertEqual(fiveHourLamps.map { $0.rawValue }, expectedFiveHourOrder.map { $0.rawValue })
+        XCTAssertEqual(onehourLamps.map { $0.rawValue }, expectedOneHourOrder.map { $0.rawValue })
+        XCTAssertEqual(fiveMinuteLamps.map { $0.rawValue }, expectedFiveMinuteOrder.map { $0.rawValue })
+        XCTAssertEqual(oneMinuteLamps.map { $0.rawValue }, expectedOneMinuteOrder.map { $0.rawValue })
+        XCTAssertTrue(isSecondsLampIlumminated)
+    }
 }
