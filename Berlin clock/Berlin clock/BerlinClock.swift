@@ -15,7 +15,7 @@ struct BerlinClock {
     let numberOfOneMinuteLamps = 4
     
     func secondsLampIluminated(seconds: Int) -> Bool {
-        guard seconds >= 0 else { return false }
+        guard seconds >= 0 || seconds > 59 else { return false }
         
         return seconds % 2 == 0
     }
@@ -26,12 +26,12 @@ struct BerlinClock {
     }
     
     func oneHoursRow(hours: Int) -> [Lamp] {
-        let numberOfActiveLamps = hours % 5
+        let numberOfActiveLamps = min(hours % 5, numberOfOneHourLamps)
         return lampsRow(totalLamps: numberOfOneHourLamps, totalActiveLamps: numberOfActiveLamps, lampColor: .red)
     }
     
     func fiveMinutesRow(minutes: Int) -> [Lamp] {
-        let numberOfActiveLamps = minutes / 5
+        let numberOfActiveLamps = min(minutes / 5, numberOfFiveMinuteLamps)
         let lamps = lampsRow(totalLamps: numberOfFiveMinuteLamps, totalActiveLamps: numberOfActiveLamps, lampColor: .yellow)
         
         return lamps.enumerated().map { index, lamp in
@@ -40,7 +40,7 @@ struct BerlinClock {
     }
     
     func oneMinutesRow(minutes: Int) -> [Lamp] {
-        let numberOfActiveLamps = minutes % 5
+        let numberOfActiveLamps = min(minutes % 5, numberOfOneMinuteLamps)
         return lampsRow(totalLamps: numberOfOneMinuteLamps, totalActiveLamps: numberOfActiveLamps, lampColor: .yellow)
     }
     
