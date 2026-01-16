@@ -200,6 +200,33 @@ final class Berlin_clockTests: XCTestCase {
     
     // MARK: - Helper full berlin clock
     
+    private func assertFullBerlinClock(hours: Int,
+                                       minutes: Int,
+                                       seconds: Int,
+                                       expectedFiveHourLamps: [Lamp],
+                                       expectedOneHourLamps: [Lamp],
+                                       expectedFiveMinuteLamps: [Lamp],
+                                       expectedOneMinuteLamps: [Lamp],
+                                       secondsLampIlluminated: Bool) {
+        let fiveHourLamps = clock.fiveHoursRow(hours: hours)
+        let onehourLamps = clock.oneHoursRow(hours: hours)
+        let fiveMinuteLamps = clock.fiveMinutesRow(minutes: minutes)
+        let oneMinuteLamps = clock.oneMinutesRow(minutes: minutes)
+        let isSecondsLampIllumminated = clock.isSecondsLampIluminated(seconds: seconds)
+        
+        let time = "\(hours):\(minutes):\(seconds)"
+        
+        assertLampRow(for: fiveHourLamps, expectedLamps: expectedFiveHourLamps, rowName: "fiveHoursRow", time: time)
+        
+        assertLampRow(for: onehourLamps, expectedLamps: expectedOneHourLamps, rowName: "oneHoursRow", time: time)
+        
+        assertLampRow(for: fiveMinuteLamps, expectedLamps: expectedFiveMinuteLamps, rowName: "fiveMinuteRow", time: time)
+        
+        assertLampRow(for: oneMinuteLamps, expectedLamps: expectedOneMinuteLamps, rowName: "oneMinutesRow", time: time)
+        
+        XCTAssertEqual(isSecondsLampIllumminated, secondsLampIlluminated, "isSecondsLampIlluminated is incorrect for \(time), expected: \(secondsLampIlluminated) but got \(isSecondsLampIllumminated)")
+    }
+    
     private func assertLampRow(for actualLamps: [Lamp], expectedLamps: [Lamp], rowName: String, time: String) {
         XCTAssertEqual(actualLamps,
                        expectedLamps,
@@ -209,107 +236,68 @@ final class Berlin_clockTests: XCTestCase {
     // MARK: - Full Berlin clock
     
     func test_full_berlin_clock_with_time_9_hours_47_minutes_24_seconds_all_rows_have_the_correct_lamp_order() {
-        
-        let fiveHourLamps = clock.fiveHoursRow(hours: 9)
-        let onehourLamps = clock.oneHoursRow(hours: 9)
-        let fiveMinuteLamps = clock.fiveMinutesRow(minutes: 47)
-        let oneMinuteLamps = clock.oneMinutesRow(minutes: 47)
-        let isSecondsLampIlumminated = clock.isSecondsLampIluminated(seconds: 24)
-        
         let expectedFiveHourLamps: [Lamp] = [.red, .off, .off, .off]
         let expectedOneHourLamps: [Lamp] = [.red, .red, .red, .red]
         let expectedFiveMinuteLamps: [Lamp] = [.yellow, .yellow, .red, .yellow, .yellow, .red, .yellow, .yellow, .red, .off, .off]
         let expectedOneMinuteLamps: [Lamp] = [.yellow, .yellow, .off, .off]
         
-        let time = "9:47:24"
-        
-        assertLampRow(for: fiveHourLamps, expectedLamps: expectedFiveHourLamps, rowName: "fiveHoursRow", time: time)
-        
-        assertLampRow(for: onehourLamps, expectedLamps: expectedOneHourLamps, rowName: "oneHoursRow", time: time)
-        
-        assertLampRow(for: fiveMinuteLamps, expectedLamps: expectedFiveMinuteLamps, rowName: "fiveMinuteRow", time: time)
-        
-        assertLampRow(for: oneMinuteLamps, expectedLamps: expectedOneMinuteLamps, rowName: "oneMinutesRow", time: time)
-        
-        XCTAssertTrue(isSecondsLampIlumminated, "isSecondsLampIlluminated is incorrect for \(time), expected: true but got \(isSecondsLampIlumminated)")
+        assertFullBerlinClock(hours: 9,
+                              minutes: 47,
+                              seconds: 24,
+                              expectedFiveHourLamps: expectedFiveHourLamps,
+                              expectedOneHourLamps: expectedOneHourLamps,
+                              expectedFiveMinuteLamps: expectedFiveMinuteLamps,
+                              expectedOneMinuteLamps: expectedOneMinuteLamps,
+                              secondsLampIlluminated: true)
     }
     
     func test_full_berlin_clock_with_midnigth_time_all_rows_have_the_correct_lamp_order() {
-        
-        let fiveHourLamps = clock.fiveHoursRow(hours: 0)
-        let onehourLamps = clock.oneHoursRow(hours: 0)
-        let fiveMinuteLamps = clock.fiveMinutesRow(minutes: 0)
-        let oneMinuteLamps = clock.oneMinutesRow(minutes: 0)
-        let isSecondsLampIlumminated = clock.isSecondsLampIluminated(seconds: 0)
-        
         let expectedFiveHourLamps: [Lamp] = [.off, .off, .off, .off]
         let expectedOneHourLamps: [Lamp] = [.off, .off, .off, .off]
         let expectedFiveMinuteLamps: [Lamp] = [.off, .off, .off, .off, .off, .off, .off, .off, .off, .off, .off]
         let expectedOneMinuteLamps: [Lamp] = [.off, .off, .off, .off]
         
-        let time = "00:00:00"
-        
-        assertLampRow(for: fiveHourLamps, expectedLamps: expectedFiveHourLamps, rowName: "fiveHoursRow", time: time)
-        
-        assertLampRow(for: onehourLamps, expectedLamps: expectedOneHourLamps, rowName: "oneHoursRow", time: time)
-        
-        assertLampRow(for: fiveMinuteLamps, expectedLamps: expectedFiveMinuteLamps, rowName: "fiveMinuteRow", time: time)
-        
-        assertLampRow(for: oneMinuteLamps, expectedLamps: expectedOneMinuteLamps, rowName: "oneMinutesRow", time: time)
-        
-        XCTAssertTrue(isSecondsLampIlumminated, "isSecondsLampIlluminated is incorrect for \(time), expected: true but got \(isSecondsLampIlumminated)")
+        assertFullBerlinClock(hours: 0,
+                              minutes: 0,
+                              seconds: 0,
+                              expectedFiveHourLamps: expectedFiveHourLamps,
+                              expectedOneHourLamps: expectedOneHourLamps,
+                              expectedFiveMinuteLamps: expectedFiveMinuteLamps,
+                              expectedOneMinuteLamps: expectedOneMinuteLamps,
+                              secondsLampIlluminated: true)
     }
     
     func test_full_berlin_clock_with_time_end_of_day_all_rows_have_the_correct_lamp_order() {
-        
-        let fiveHourLamps = clock.fiveHoursRow(hours: 23)
-        let onehourLamps = clock.oneHoursRow(hours: 23)
-        let fiveMinuteLamps = clock.fiveMinutesRow(minutes: 59)
-        let oneMinuteLamps = clock.oneMinutesRow(minutes: 59)
-        let isSecondsLampIlumminated = clock.isSecondsLampIluminated(seconds: 59)
-        
         let expectedFiveHourLamps: [Lamp] = [.red, .red, .red, .red]
         let expectedOneHourLamps: [Lamp] = [.red, .red, .red, .off]
         let expectedFiveMinuteLamps: [Lamp] = [.yellow, .yellow, .red, .yellow, .yellow, .red, .yellow, .yellow, .red, .yellow, .yellow]
         let expectedOneMinuteLamps: [Lamp] = [.yellow, .yellow, .yellow, .yellow]
         
-        let time = "23:59:59"
-        
-        assertLampRow(for: fiveHourLamps, expectedLamps: expectedFiveHourLamps, rowName: "fiveHoursRow", time: time)
-        
-        assertLampRow(for: onehourLamps, expectedLamps: expectedOneHourLamps, rowName: "oneHoursRow", time: time)
-        
-        assertLampRow(for: fiveMinuteLamps, expectedLamps: expectedFiveMinuteLamps, rowName: "fiveMinuteRow", time: time)
-        
-        assertLampRow(for: oneMinuteLamps, expectedLamps: expectedOneMinuteLamps, rowName: "oneMinutesRow", time: time)
-        
-        XCTAssertFalse(isSecondsLampIlumminated, "isSecondsLampIlluminated is incorrect for \(time), expected: true but got \(isSecondsLampIlumminated)")
+        assertFullBerlinClock(hours: 23,
+                              minutes: 59,
+                              seconds: 59,
+                              expectedFiveHourLamps: expectedFiveHourLamps,
+                              expectedOneHourLamps: expectedOneHourLamps,
+                              expectedFiveMinuteLamps: expectedFiveMinuteLamps,
+                              expectedOneMinuteLamps: expectedOneMinuteLamps,
+                              secondsLampIlluminated: false)
     }
     
     // MARK: - Negative values, should never happen but better safe than sorry (eg user input in a later stadium)
     
     func test_full_berlin_clock_negative_time_values_returns_all_lamps_off() {
-        let fiveHourLamps = clock.fiveHoursRow(hours: -23)
-        let onehourLamps = clock.oneHoursRow(hours: -23)
-        let fiveMinuteLamps = clock.fiveMinutesRow(minutes: -59)
-        let oneMinuteLamps = clock.oneMinutesRow(minutes: -59)
-        let isSecondsLampIlumminated = clock.isSecondsLampIluminated(seconds: -10)
-        
         let expectedFiveHourLamps: [Lamp] = [.off, .off, .off, .off]
         let expectedOneHourLamps: [Lamp] = [.off, .off, .off, .off]
         let expectedFiveMinuteLamps: [Lamp] = [.off, .off, .off, .off, .off, .off, .off, .off, .off, .off, .off]
         let expectedOneMinuteLamps: [Lamp] = [.off, .off, .off, .off]
         
-        let time = "-23:59:10"
-        
-        assertLampRow(for: fiveHourLamps, expectedLamps: expectedFiveHourLamps, rowName: "fiveHoursRow", time: time)
-        
-        assertLampRow(for: onehourLamps, expectedLamps: expectedOneHourLamps, rowName: "oneHoursRow", time: time)
-        
-        assertLampRow(for: fiveMinuteLamps, expectedLamps: expectedFiveMinuteLamps, rowName: "fiveMinuteRow", time: time)
-        
-        assertLampRow(for: oneMinuteLamps, expectedLamps: expectedOneMinuteLamps, rowName: "oneMinutesRow", time: time)
-        
-        XCTAssertFalse(isSecondsLampIlumminated, "secondsLampIlluminated is incorrect for \(time), expected: false but got \(isSecondsLampIlumminated)")
+        assertFullBerlinClock(hours: -23,
+                              minutes: -59,
+                              seconds: -10,
+                              expectedFiveHourLamps: expectedFiveHourLamps,
+                              expectedOneHourLamps: expectedOneHourLamps,
+                              expectedFiveMinuteLamps: expectedFiveMinuteLamps,
+                              expectedOneMinuteLamps: expectedOneMinuteLamps,
+                              secondsLampIlluminated: false)
     }
 }
