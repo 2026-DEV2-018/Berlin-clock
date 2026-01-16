@@ -270,10 +270,18 @@ final class Berlin_clockTests: XCTestCase {
         let expectedFiveMinuteOrder: [Lamp] = [.yellow, .yellow, .red, .yellow, .yellow, .red, .yellow, .yellow, .red, .off, .off]
         let expectedOneMinuteOrder: [Lamp] = [.yellow, .yellow, .off, .off]
         
-        XCTAssertEqual(fiveHourLamps.map { $0.rawValue }, expectedFiveHourOrder.map { $0.rawValue })
-        XCTAssertEqual(onehourLamps.map { $0.rawValue }, expectedOneHourOrder.map { $0.rawValue })
-        XCTAssertEqual(fiveMinuteLamps.map { $0.rawValue }, expectedFiveMinuteOrder.map { $0.rawValue })
-        XCTAssertEqual(oneMinuteLamps.map { $0.rawValue }, expectedOneMinuteOrder.map { $0.rawValue })
-        XCTAssertTrue(isSecondsLampIlumminated)
+        XCTAssertEqual(fiveHourLamps,
+                       expectedFiveHourOrder,
+                       "fiveHoursRow is icorrect for 9:47:24, got: \(fiveHourLamps.map { $0.rawValue } ), expected: \(expectedFiveHourOrder.map { $0.rawValue })")
+        XCTAssertEqual(onehourLamps,
+                       expectedOneHourOrder,
+                       "oneHoursRow is incorrect for 9:47:24, got: \(onehourLamps.map { $0.rawValue } ), expected: \(expectedOneHourOrder.map { $0.rawValue })")
+        XCTAssertEqual(fiveMinuteLamps,
+                       expectedFiveMinuteOrder,
+                       "fiveMinutesRow is incorrect for 9:47:24, got: \(fiveMinuteLamps.map { $0.rawValue } ), expected: \(expectedFiveMinuteOrder.map { $0.rawValue })")
+        XCTAssertEqual(oneMinuteLamps,
+                       expectedOneMinuteOrder,
+                       "oneMinutesRow is incorrect for 9:47:24, got: \(oneMinuteLamps.map { $0.rawValue } ), expected: \(expectedOneMinuteOrder.map { $0.rawValue })")
+        XCTAssertTrue(isSecondsLampIlumminated, "secondLampIlluminated is incorrect for 9:47:24, expected: true but got \(isSecondsLampIlumminated)")
     }
 }
