@@ -40,43 +40,43 @@ final class Berlin_clockTests: XCTestCase {
         XCTAssertEqual(numberOfIlluminatedLamps, expectedLampsOn)
     }
     
-    func test_five_hours_row_returns_four_lamps_on_when_hours_is_zero() {
+    func test_fiveHoursRow_returns_0_lamps_on_when_hours_is_0() {
         assertFiveHoursRow(hours: 0, expectedLampsOn: 0)
     }
     
-    func test_five_hours_row_returns_zero_lamps_on_when_hours_is_one() {
+    func test_fiveHoursRow_returns_0_lamps_on_when_hours_is_1() {
         assertFiveHoursRow(hours: 1, expectedLampsOn: 0)
     }
     
-    func test_five_hours_row_returns_one_lamp_on_for_five_hours() {
+    func test_fiveHoursRow_returns_1_lamp_on_when_hours_is_5() {
         assertFiveHoursRow(hours: 5, expectedLampsOn: 1)
     }
     
-    func test_five_hours_row_returns_one_lamp_on_when_hours_is_eight() {
+    func test_fiveHoursRow_returns_1_lamp_on_when_hours_is_8() {
         assertFiveHoursRow(hours: 8, expectedLampsOn: 1)
     }
     
-    func test_five_hours_row_returns_two_lamps_on_when_hours_is_ten() {
+    func test_fiveHoursRow_returns_2_lamps_on_when_hours_is_10() {
         assertFiveHoursRow(hours: 10, expectedLampsOn: 2)
     }
     
-    func test_five_hours_row_returns_three_lamps_on_when_hours_is_fifteen() {
+    func test_fiveHoursRow_returns_3_lamps_on_when_hours_is_15() {
         assertFiveHoursRow(hours: 15, expectedLampsOn: 3)
     }
     
-    func test_five_hours_row_returns_three_lamps_on_when_hours_is_nineteen() {
+    func test_fiveHoursRow_returns_3_lamps_on_when_hours_is_19() {
         assertFiveHoursRow(hours: 19, expectedLampsOn: 3)
     }
     
-    func test_five_hours_row_returns_four_lamps_on_when_hours_is_twenty() {
+    func test_fiveHoursRow_returns_4_lamps_on_when_hours_is_20() {
         assertFiveHoursRow(hours: 20, expectedLampsOn: 4)
     }
     
-    func test_five_hours_row_returns_four_lamps_on_when_hours_is_twenty_three() {
+    func test_fiveHoursRow_returns_4_lamps_on_when_hours_is_23() {
         assertFiveHoursRow(hours: 23, expectedLampsOn: 4)
     }
     
-    func test_five_hours_row_returns_correct_number_of_lamps() {
+    func test_fiveHoursRow_returns_correct_number_of_lamps() {
         let lamps = clock.fiveHoursRow(hours: 0)
         XCTAssertEqual(lamps.count, 4)
     }
@@ -89,42 +89,42 @@ final class Berlin_clockTests: XCTestCase {
         XCTAssertEqual(numberOfIlluminatedLamps, expectedLampsOn)
     }
     
-    func test_one_hours_row_returns_zero_lamps_on_when_hours_is_zero() {
+    func test_oneHoursRow_returns_0_lamps_on_when_hours_is_0() {
         assertOneHoursRow(hours: 0, expectedLampsOn: 0)
     }
     
-    func test_one_hours_row_returns_one_lamp_on_when_hours_is_one() {
+    func test_oneHoursRow_returns_1_lamp_on_when_hours_is_1() {
         assertOneHoursRow(hours: 1, expectedLampsOn: 1)
     }
     
-    func test_one_hours_row_returns_two_lamps_on_when_hours_is_two() {
+    func test_oneHoursRow_returns_2_lamps_on_when_hours_is_2() {
         assertOneHoursRow(hours: 2, expectedLampsOn: 2)
     }
     
-    func test_one_hours_row_returns_three_lamps_on_when_hours_is_three() {
+    func test_oneHoursRow_returns_3_lamps_on_when_hours_is_3() {
         assertOneHoursRow(hours: 3, expectedLampsOn: 3)
     }
     
-    func test_one_hours_row_returns_four_lamps_on_when_hours_is_four() {
+    func test_oneHoursRow_returns_4_lamps_on_when_hours_is_4() {
         assertOneHoursRow(hours: 4, expectedLampsOn: 4)
     }
     
-    func test_one_hours_row_returns_one_lamp_on_when_hours_is_five() {
+    func test_oneHoursRow_returns_1_lamp_on_when_hours_is_5() {
         assertOneHoursRow(hours: 5, expectedLampsOn: 0)
     }
     
-    func test_one_hours_row_returns_three_lamps_on_when_hours_is_twenty_three() {
+    func test_oneHoursRow_returns_3_lamps_on_when_hours_is_23() {
         assertOneHoursRow(hours: 23, expectedLampsOn: 3)
     }
     
-    func test_one_hours_row_returns_correct_number_of_lamps() {
+    func test_oneHoursRow_returns_correct_number_of_lamps() {
         let lamps = clock.oneHoursRow(hours: 0)
         XCTAssertEqual(lamps.count, 4)
     }
     
     // MARK: - Five minutes
     
-    func test_five_minutes_row_returns_correct_number_of_lamps() {
+    func test_fiveMinutesRow_returns_correct_number_of_lamps() {
         let lamps = clock.fiveMinutesRow(minutes: 0)
         XCTAssertEqual(lamps.count, 11)
     }
@@ -135,75 +135,75 @@ final class Berlin_clockTests: XCTestCase {
         XCTAssertEqual(numberOfIlluminatedLamps, expectedLampsOn)
     }
     
-    func test_five_minutes_row_returns_zero_lamps_on_when_mintues_is_zero() {
+    func test_fiveMinutesRow_returns_0_lamps_on_when_mintues_is_0() {
         assertFiveMinutesRow(minutes: 0, expectedLampsOn: 0)
     }
     
-    func test_five_minutes_row_returns_one_lamp_on_when_mintues_is_five() {
+    func test_fiveMinutesRow_returns_1_lamp_on_when_mintues_is_5() {
         assertFiveMinutesRow(minutes: 5, expectedLampsOn: 1)
     }
     
-    func test_five_minutes_row_returns_two_lamp_on_when_mintues_is_ten() {
+    func test_fiveMinutesRow_returns_2_lamp_on_when_mintues_is_10() {
         assertFiveMinutesRow(minutes: 10, expectedLampsOn: 2)
     }
     
-    func test_five_minutes_row_returns_three_lamps_on_when_mintues_is_fifteen() {
+    func test_fiveMinutesRow_returns_3_lamps_on_when_mintues_is_15() {
         assertFiveMinutesRow(minutes: 15, expectedLampsOn: 3)
     }
     
-    func test_five_minutes_row_returns_four_lamps_on_when_minutes_is_twenty() {
+    func test_fiveMinutesRow_returns_4_lamps_on_when_minutes_is_20() {
         assertFiveMinutesRow(minutes: 20, expectedLampsOn: 4)
     }
     
-    func test_five_minutes_row_returns_five_lamps_on_when_minutes_is_twentyFive() {
+    func test_fiveMinutesRow_returns_5_lamps_on_when_minutes_is_25() {
         assertFiveMinutesRow(minutes: 25, expectedLampsOn: 5)
     }
     
-    func test_five_minutes_row_returns_six_lamps_on_when_minutes_is_thirty() {
+    func test_fiveMinutesRow_returns_6_lamps_on_when_minutes_is_30() {
         assertFiveMinutesRow(minutes: 30, expectedLampsOn: 6)
     }
     
-    func test_five_minutes_row_returns_seven_lamps_on_when_minutes_is_thirtyFive() {
+    func test_fiveMinutesRow_returns_7_lamps_on_when_minutes_is_35() {
         assertFiveMinutesRow(minutes: 35, expectedLampsOn: 7)
     }
     
-    func test_five_minutes_row_returns_eight_lamps_on_when_minutes_is_forty() {
+    func test_fiveMinutesRow_returns_8_lamps_on_when_minutes_is_40() {
         assertFiveMinutesRow(minutes: 40, expectedLampsOn: 8)
     }
     
-    func test_five_minutes_row_returns_nine_lamps_on_when_minutes_is_forty_five() {
+    func test_fiveMinutesRow_returns_9_lamps_on_when_minutes_is_45() {
         assertFiveMinutesRow(minutes: 45, expectedLampsOn: 9)
     }
     
-    func test_five_minutes_row_returns_ten_lamps_on_when_minutes_is_fifty() {
+    func test_fiveMinutesRow_returns_10_lamps_on_when_minutes_is_50() {
         assertFiveMinutesRow(minutes: 50, expectedLampsOn: 10)
     }
     
-    func test_five_minutes_row_returns_eleven_lamps_on_when_minutes_is_fifty_five() {
+    func test_fiveMinutesRow_returns_11_lamps_on_when_minutes_is_55() {
         assertFiveMinutesRow(minutes: 55, expectedLampsOn: 11)
     }
     
     // MARK: - Five minutes rows every third row red
     
-    func test_five_minutes_row_returns_third_lamp_red_when_minutes_is_fifteen() {
+    func test_fiveMinutesRow_returns_3rd_lamp_red_when_minutes_is_15() {
         let lamps = clock.fiveMinutesRow(minutes: 15)
         let thirdLamp = lamps[2]
         XCTAssertTrue(thirdLamp == .red)
     }
     
-    func test_five_minutes_row_returns_sixt_lamp_red_when_minutes_is_thirty() {
+    func test_fiveMinutesRow_returns_6th_lamp_red_when_minutes_is_30() {
         let lamps = clock.fiveMinutesRow(minutes: 30)
         let sixthLamp = lamps[5]
         XCTAssertTrue(sixthLamp == .red)
     }
     
-    func test_five_minutes_row_returns_ninth_lamp_red_when_minutes_is_forty_five() {
+    func test_fiveMinutesRow_returns_9th_lamp_red_when_minutes_is_45() {
         let lamps = clock.fiveMinutesRow(minutes: 45)
         let ninthLamp = lamps[8]
         XCTAssertTrue(ninthLamp == .red)
     }
     
-    func test_five_minutes_row_has_red_lamp_on_every_third_position_for_illuminated_lamps() {
+    func test_fiveMinutesRow_has_red_lamp_on_every_third_position_for_illuminated_lamps() {
         let lamps = clock.fiveMinutesRow(minutes: 55)
         let illuminatedLamps = lamps.filter { $0.isOn }
 
@@ -216,7 +216,7 @@ final class Berlin_clockTests: XCTestCase {
     
     // MARK: - One minute
     
-    func test_one_minutes_row_returns_correct_number_of_lamps() {
+    func test_oneMinutesRow_returns_correct_number_of_lamps() {
         let lamps = clock.oneMinutesRow(minutes: 0)
         XCTAssertEqual(lamps.count, 4)
     }
@@ -227,37 +227,37 @@ final class Berlin_clockTests: XCTestCase {
         XCTAssertEqual(illuminatedLamps.count, expectedLampsOn)
     }
     
-    func test_one_minutes_row_returns_one_lamp_on_when_minutes_is_one() {
+    func test_oneMinutesRow_returns_1_lamp_on_when_minutes_is_1() {
         assertOneMinutesRow(minutes: 1, expectedLampsOn: 1)
     }
     
-    func test_one_minutes_row_returns_two_lamps_on_when_minutes_is_two() {
+    func test_oneMinutesRow_returns_2_lamps_on_when_minutes_is_2() {
         assertOneMinutesRow(minutes: 2, expectedLampsOn: 2)
     }
     
-    func test_one_minutes_row_returns_three_lamps_on_when_minutes_is_three() {
+    func test_oneMinutesRow_returns_3_lamps_on_when_minutes_is_3() {
         assertOneMinutesRow(minutes: 3, expectedLampsOn: 3)
     }
     
-    func test_one_minutes_row_returns_four_lamps_on_when_minutes_is_four() {
+    func test_oneMinutesRow_returns_4_lamps_on_when_minutes_is_4() {
         assertOneMinutesRow(minutes: 4, expectedLampsOn: 4)
     }
     
-    func test_one_minutes_row_returns_zero_lamps_on_when_minutes_is_five() {
+    func test_oneMinutesRow_returns_0_lamps_on_when_minutes_is_5() {
         assertOneMinutesRow(minutes: 5, expectedLampsOn: 0)
     }
     
-    func test_one_minutes_row_returns_one_lamp_on_when_minutes_is_six() {
+    func test_oneMinutesRow_returns_1_lamp_on_when_minutes_is_6() {
         assertOneMinutesRow(minutes: 6, expectedLampsOn: 1)
     }
     
-    func test_one_minutes_row_returns_four_lamps_on_when_minutes_is_fifty_nine() {
+    func test_oneMinutesRow_returns_4_lamps_on_when_minutes_is_55() {
         assertOneMinutesRow(minutes: 59, expectedLampsOn: 4)
     }
     
-    // MARK: - Time row order
+    // MARK: - Full Berlin clock
     
-    func test_full_berlin_clock_with_time_nine_hours_forty_seven_minutes_twenty_four_seconds_all_rows_have_the_correct_lamp_order() {
+    func test_full_berlin_clock_with_time_9_hours_47_minutes_24_seconds_all_rows_have_the_correct_lamp_order() {
         
         let fiveHourLamps = clock.fiveHoursRow(hours: 9)
         let onehourLamps = clock.oneHoursRow(hours: 9)
