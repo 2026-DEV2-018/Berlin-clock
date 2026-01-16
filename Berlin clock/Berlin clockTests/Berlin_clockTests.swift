@@ -25,19 +25,19 @@ final class Berlin_clockTests: XCTestCase {
     // MARK: - seconds
     
     func test_seconds_lamp_is_on_when_it_is_even() {
-        XCTAssertTrue(clock.secondsLampIluminated(seconds: 0))
+        XCTAssertTrue(clock.isSecondsLampIluminated(seconds: 0))
     }
     
     func test_seconds_lamp_is_off_when_seconds_are_odd() {
-        XCTAssertFalse(clock.secondsLampIluminated(seconds: 1))
+        XCTAssertFalse(clock.isSecondsLampIluminated(seconds: 1))
     }
     
     func test_seconds_lamp_is_off_when_seconds_is_58() {
-        XCTAssertTrue(clock.secondsLampIluminated(seconds: 58))
+        XCTAssertTrue(clock.isSecondsLampIluminated(seconds: 58))
     }
     
     func test_seconds_lamp_is_off_when_seconds_is_59() {
-        XCTAssertFalse(clock.secondsLampIluminated(seconds: 59))
+        XCTAssertFalse(clock.isSecondsLampIluminated(seconds: 59))
     }
     
     // MARK: - five hours
@@ -232,7 +232,7 @@ final class Berlin_clockTests: XCTestCase {
         let onehourLamps = clock.oneHoursRow(hours: 9)
         let fiveMinuteLamps = clock.fiveMinutesRow(minutes: 47)
         let oneMinuteLamps = clock.oneMinutesRow(minutes: 47)
-        let isSecondsLampIlumminated = clock.secondsLampIluminated(seconds: 24)
+        let isSecondsLampIlumminated = clock.isSecondsLampIluminated(seconds: 24)
         
         let expectedFiveHourLamps: [Lamp] = [.red, .off, .off, .off]
         let expectedOneHourLamps: [Lamp] = [.red, .red, .red, .red]
@@ -259,7 +259,7 @@ final class Berlin_clockTests: XCTestCase {
         let onehourLamps = clock.oneHoursRow(hours: -23)
         let fiveMinuteLamps = clock.fiveMinutesRow(minutes: -59)
         let oneMinuteLamps = clock.oneMinutesRow(minutes: -59)
-        let isSecondsLampIlumminated = clock.secondsLampIluminated(seconds: -10)
+        let isSecondsLampIlumminated = clock.isSecondsLampIluminated(seconds: -10)
         
         let expectedFiveHourLamps: [Lamp] = [.off, .off, .off, .off]
         let expectedOneHourLamps: [Lamp] = [.off, .off, .off, .off]
