@@ -22,26 +22,39 @@ struct BerlinClock {
     
     func fiveHoursRow(hours: Int) -> [Lamp] {
         let numberOfActiveLamps = min(hours / 5, numberOfFiveHourLamps)
-        return lampsRow(totalLamps: numberOfFiveHourLamps, totalActiveLamps: numberOfActiveLamps, lampColor: .red)
+        
+        return lampsRow(totalLamps: numberOfFiveHourLamps,
+                        totalActiveLamps: numberOfActiveLamps,
+                        lampColor: .red)
     }
     
     func oneHoursRow(hours: Int) -> [Lamp] {
         let numberOfActiveLamps = min(hours % 5, numberOfOneHourLamps)
-        return lampsRow(totalLamps: numberOfOneHourLamps, totalActiveLamps: numberOfActiveLamps, lampColor: .red)
+        
+        return lampsRow(totalLamps: numberOfOneHourLamps,
+                        totalActiveLamps: numberOfActiveLamps,
+                        lampColor: .red)
     }
     
     func fiveMinutesRow(minutes: Int) -> [Lamp] {
         let numberOfActiveLamps = min(minutes / 5, numberOfFiveMinuteLamps)
-        let lamps = lampsRow(totalLamps: numberOfFiveMinuteLamps, totalActiveLamps: numberOfActiveLamps, lampColor: .yellow)
+        
+        let lamps = lampsRow(totalLamps: numberOfFiveMinuteLamps,
+                             totalActiveLamps: numberOfActiveLamps,
+                             lampColor: .yellow)
         
         return lamps.enumerated().map { index, lamp in
+            // make every third lamp red when it's on
             (index + 1) % 3 == 0 && lamp.isOn ? .red : lamp
         }
     }
     
     func oneMinutesRow(minutes: Int) -> [Lamp] {
         let numberOfActiveLamps = min(minutes % 5, numberOfOneMinuteLamps)
-        return lampsRow(totalLamps: numberOfOneMinuteLamps, totalActiveLamps: numberOfActiveLamps, lampColor: .yellow)
+        
+        return lampsRow(totalLamps: numberOfOneMinuteLamps,
+                        totalActiveLamps: numberOfActiveLamps,
+                        lampColor: .yellow)
     }
     
     // MARK: - Helper method to create rows
