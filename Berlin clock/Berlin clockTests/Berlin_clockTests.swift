@@ -221,6 +221,14 @@ final class Berlin_clockTests: XCTestCase {
         assertOneMinutesRow(minutes: 59, expectedLampsOn: 4)
     }
     
+    // MARK: - Helper full berlin clock
+    
+    private func assertLampRow(for actualLamps: [Lamp], expectedLamps: [Lamp], rowName: String, time: String) {
+        XCTAssertEqual(actualLamps,
+                       expectedLamps,
+                       "\(name) is icorrect for \(time), got: \(actualLamps.map { $0.rawValue } ), expected: \(expectedLamps.map { $0.rawValue })")
+    }
+    
     // MARK: - Full Berlin clock
     
     func test_full_berlin_clock_with_time_9_hours_47_minutes_24_seconds_all_rows_have_the_correct_lamp_order() {
@@ -231,24 +239,22 @@ final class Berlin_clockTests: XCTestCase {
         let oneMinuteLamps = clock.oneMinutesRow(minutes: 47)
         let isSecondsLampIlumminated = clock.secondsLampIluminated(seconds: 24)
         
-        let expectedFiveHourOrder: [Lamp] = [.red, .off, .off, .off]
-        let expectedOneHourOrder: [Lamp] = [.red, .red, .red, .red]
-        let expectedFiveMinuteOrder: [Lamp] = [.yellow, .yellow, .red, .yellow, .yellow, .red, .yellow, .yellow, .red, .off, .off]
-        let expectedOneMinuteOrder: [Lamp] = [.yellow, .yellow, .off, .off]
+        let expectedFiveHourLamps: [Lamp] = [.red, .off, .off, .off]
+        let expectedOneHourLamps: [Lamp] = [.red, .red, .red, .red]
+        let expectedFiveMinuteLamps: [Lamp] = [.yellow, .yellow, .red, .yellow, .yellow, .red, .yellow, .yellow, .red, .off, .off]
+        let expectedOneMinuteLamps: [Lamp] = [.yellow, .yellow, .off, .off]
         
-        XCTAssertEqual(fiveHourLamps,
-                       expectedFiveHourOrder,
-                       "fiveHoursRow is icorrect for 9:47:24, got: \(fiveHourLamps.map { $0.rawValue } ), expected: \(expectedFiveHourOrder.map { $0.rawValue })")
-        XCTAssertEqual(onehourLamps,
-                       expectedOneHourOrder,
-                       "oneHoursRow is incorrect for 9:47:24, got: \(onehourLamps.map { $0.rawValue } ), expected: \(expectedOneHourOrder.map { $0.rawValue })")
-        XCTAssertEqual(fiveMinuteLamps,
-                       expectedFiveMinuteOrder,
-                       "fiveMinutesRow is incorrect for 9:47:24, got: \(fiveMinuteLamps.map { $0.rawValue } ), expected: \(expectedFiveMinuteOrder.map { $0.rawValue })")
-        XCTAssertEqual(oneMinuteLamps,
-                       expectedOneMinuteOrder,
-                       "oneMinutesRow is incorrect for 9:47:24, got: \(oneMinuteLamps.map { $0.rawValue } ), expected: \(expectedOneMinuteOrder.map { $0.rawValue })")
-        XCTAssertTrue(isSecondsLampIlumminated, "secondLampIlluminated is incorrect for 9:47:24, expected: true but got \(isSecondsLampIlumminated)")
+        let time = "9:47:24"
+        
+        assertLampRow(for: fiveHourLamps, expectedLamps: expectedFiveHourLamps, rowName: "fiveHoursRow", time: time)
+        
+        assertLampRow(for: onehourLamps, expectedLamps: expectedOneHourLamps, rowName: "oneHoursRow", time: time)
+        
+        assertLampRow(for: fiveMinuteLamps, expectedLamps: expectedFiveMinuteLamps, rowName: "fiveMinuteRow", time: time)
+        
+        assertLampRow(for: oneMinuteLamps, expectedLamps: expectedOneMinuteLamps, rowName: "oneMinutesRow", time: time)
+        
+        XCTAssertTrue(isSecondsLampIlumminated, "secondLampIlluminated is incorrect for \(time), expected: true but got \(isSecondsLampIlumminated)")
     }
     
     // MARK: - Negative values, should never happen but better safe than sorry (eg user input in a later stadium)
@@ -260,23 +266,21 @@ final class Berlin_clockTests: XCTestCase {
         let oneMinuteLamps = clock.oneMinutesRow(minutes: -59)
         let isSecondsLampIlumminated = clock.secondsLampIluminated(seconds: -10)
         
-        let expectedFiveHourOrder: [Lamp] = [.off, .off, .off, .off]
-        let expectedOneHourOrder: [Lamp] = [.off, .off, .off, .off]
-        let expectedFiveMinuteOrder: [Lamp] = [.off, .off, .off, .off, .off, .off, .off, .off, .off, .off, .off]
-        let expectedOneMinuteOrder: [Lamp] = [.off, .off, .off, .off]
+        let expectedFiveHourLamps: [Lamp] = [.off, .off, .off, .off]
+        let expectedOneHourLamps: [Lamp] = [.off, .off, .off, .off]
+        let expectedFiveMinuteLamps: [Lamp] = [.off, .off, .off, .off, .off, .off, .off, .off, .off, .off, .off]
+        let expectedOneMinuteLamps: [Lamp] = [.off, .off, .off, .off]
         
-        XCTAssertEqual(fiveHourLamps,
-                       expectedFiveHourOrder,
-                       "fiveHoursRow is icorrect for -23:59:10, got: \(fiveHourLamps.map { $0.rawValue } ), expected: \(expectedFiveHourOrder.map { $0.rawValue })")
-        XCTAssertEqual(onehourLamps,
-                       expectedOneHourOrder,
-                       "oneHoursRow is incorrect for -23:59:10, got: \(onehourLamps.map { $0.rawValue } ), expected: \(expectedOneHourOrder.map { $0.rawValue })")
-        XCTAssertEqual(fiveMinuteLamps,
-                       expectedFiveMinuteOrder,
-                       "fiveMinutesRow is incorrect for -23:59:10, got: \(fiveMinuteLamps.map { $0.rawValue } ), expected: \(expectedFiveMinuteOrder.map { $0.rawValue })")
-        XCTAssertEqual(oneMinuteLamps,
-                       expectedOneMinuteOrder,
-                       "oneMinutesRow is incorrect for -23:59:10, got: \(oneMinuteLamps.map { $0.rawValue } ), expected: \(expectedOneMinuteOrder.map { $0.rawValue })")
+        let time = "-23:59:10"
+        
+        assertLampRow(for: fiveHourLamps, expectedLamps: expectedFiveHourLamps, rowName: "fiveHoursRow", time: time)
+        
+        assertLampRow(for: onehourLamps, expectedLamps: expectedOneHourLamps, rowName: "oneHoursRow", time: time)
+        
+        assertLampRow(for: fiveMinuteLamps, expectedLamps: expectedFiveMinuteLamps, rowName: "fiveMinuteRow", time: time)
+        
+        assertLampRow(for: oneMinuteLamps, expectedLamps: expectedOneMinuteLamps, rowName: "oneMinutesRow", time: time)
+        
         XCTAssertFalse(isSecondsLampIlumminated, "secondLampIlluminated is incorrect for -23:59:10, expected: false but got \(isSecondsLampIlumminated)")
     }
 }
