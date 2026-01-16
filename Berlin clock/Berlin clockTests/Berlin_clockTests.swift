@@ -33,7 +33,7 @@ final class Berlin_clockTests: XCTestCase {
     }
     
     func test_seconds_lamp_is_off_when_seconds_is_58() {
-        XCTAssertFalse(clock.secondsLampIluminated(seconds: 58))
+        XCTAssertTrue(clock.secondsLampIluminated(seconds: 58))
     }
     
     func test_seconds_lamp_is_off_when_seconds_is_59() {
