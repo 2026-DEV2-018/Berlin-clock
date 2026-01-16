@@ -32,6 +32,14 @@ final class Berlin_clockTests: XCTestCase {
         XCTAssertFalse(clock.secondsLampIluminated(seconds: 1))
     }
     
+    func test_seconds_lamp_is_off_when_seconds_is_58() {
+        XCTAssertFalse(clock.secondsLampIluminated(seconds: 58))
+    }
+    
+    func test_seconds_lamp_is_off_when_seconds_is_59() {
+        XCTAssertFalse(clock.secondsLampIluminated(seconds: 59))
+    }
+    
     // MARK: - five hours
     
     private func assertFiveHoursRow(hours: Int, expectedLampsOn: Int) {
@@ -268,6 +276,6 @@ final class Berlin_clockTests: XCTestCase {
         
         assertLampRow(for: oneMinuteLamps, expectedLamps: expectedOneMinuteLamps, rowName: "oneMinutesRow", time: time)
         
-        XCTAssertFalse(isSecondsLampIlumminated, "secondLampIlluminated is incorrect for -23:59:10, expected: false but got \(isSecondsLampIlumminated)")
+        XCTAssertFalse(isSecondsLampIlumminated, "secondLampIlluminated is incorrect for \(time), expected: false but got \(isSecondsLampIlumminated)")
     }
 }
