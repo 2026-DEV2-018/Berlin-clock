@@ -40,6 +40,13 @@ final class Berlin_clockTests: XCTestCase {
         XCTAssertEqual(numberOfIlluminatedLamps, expectedLampsOn)
     }
     
+    func test_fiveHoursRow_returns_correct_number_of_lamps_on_for_every_multiplication_of_five() {
+        for hour in stride(from: 0, to: 24, by: 5) {
+            let expectedLampsOn = hour / 5
+            assertFiveHoursRow(hours: hour, expectedLampsOn: expectedLampsOn)
+        }
+    }
+    
     func test_fiveHoursRow_returns_0_lamps_on_when_hours_is_0() {
         assertFiveHoursRow(hours: 0, expectedLampsOn: 0)
     }
