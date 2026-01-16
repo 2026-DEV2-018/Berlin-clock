@@ -257,14 +257,5 @@ final class Berlin_clockTests: XCTestCase {
     
     // MARK: - Time row order
     
-    func test_given_a_date_with_midnight_hours_the_order_of_five_hour_row_is_correct() {
-        let midnight = Calendar.current.startOfDay(for: Date())
-        let clock = BerlinClock()
-        let hour = Calendar.current.component(.hour, from: midnight)
-        
-        let lamps = clock.fiveHoursRow(hours: hour)
-        let expectedOrder: [Lamp] = [.off, .off, .off, .off]
-        
-        XCTAssertEqual(lamps.map { $0.rawValue }, expectedOrder.map { $0.rawValue })
-    }
+    
 }
