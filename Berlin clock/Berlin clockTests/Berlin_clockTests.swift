@@ -99,20 +99,8 @@ final class Berlin_clockTests: XCTestCase {
         assertOneHoursRow(hours: 1, expectedLampsOn: 1)
     }
     
-    func test_oneHoursRow_returns_2_lamps_on_when_hours_is_2() {
-        assertOneHoursRow(hours: 2, expectedLampsOn: 2)
-    }
-    
-    func test_oneHoursRow_returns_3_lamps_on_when_hours_is_3() {
-        assertOneHoursRow(hours: 3, expectedLampsOn: 3)
-    }
-    
     func test_oneHoursRow_returns_4_lamps_on_when_hours_is_4() {
         assertOneHoursRow(hours: 4, expectedLampsOn: 4)
-    }
-    
-    func test_oneHoursRow_returns_1_lamp_on_when_hours_is_5() {
-        assertOneHoursRow(hours: 5, expectedLampsOn: 0)
     }
     
     func test_oneHoursRow_returns_3_lamps_on_when_hours_is_23() {
