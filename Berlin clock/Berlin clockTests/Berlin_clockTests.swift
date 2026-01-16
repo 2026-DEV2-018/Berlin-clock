@@ -234,6 +234,32 @@ final class Berlin_clockTests: XCTestCase {
         XCTAssertTrue(isSecondsLampIlumminated, "isSecondsLampIlluminated is incorrect for \(time), expected: true but got \(isSecondsLampIlumminated)")
     }
     
+    func test_full_berlin_clock_with_midnigth_time_all_rows_have_the_correct_lamp_order() {
+        
+        let fiveHourLamps = clock.fiveHoursRow(hours: 0)
+        let onehourLamps = clock.oneHoursRow(hours: 0)
+        let fiveMinuteLamps = clock.fiveMinutesRow(minutes: 0)
+        let oneMinuteLamps = clock.oneMinutesRow(minutes: 0)
+        let isSecondsLampIlumminated = clock.isSecondsLampIluminated(seconds: 0)
+        
+        let expectedFiveHourLamps: [Lamp] = [.off, .off, .off, .off]
+        let expectedOneHourLamps: [Lamp] = [.off, .off, .off, .off]
+        let expectedFiveMinuteLamps: [Lamp] = [.off, .off, .off, .off, .off, .off, .off, .off, .off, .off, .off]
+        let expectedOneMinuteLamps: [Lamp] = [.off, .off, .off, .off]
+        
+        let time = "00:00:00"
+        
+        assertLampRow(for: fiveHourLamps, expectedLamps: expectedFiveHourLamps, rowName: "fiveHoursRow", time: time)
+        
+        assertLampRow(for: onehourLamps, expectedLamps: expectedOneHourLamps, rowName: "oneHoursRow", time: time)
+        
+        assertLampRow(for: fiveMinuteLamps, expectedLamps: expectedFiveMinuteLamps, rowName: "fiveMinuteRow", time: time)
+        
+        assertLampRow(for: oneMinuteLamps, expectedLamps: expectedOneMinuteLamps, rowName: "oneMinutesRow", time: time)
+        
+        XCTAssertTrue(isSecondsLampIlumminated, "isSecondsLampIlluminated is incorrect for \(time), expected: true but got \(isSecondsLampIlumminated)")
+    }
+    
     // MARK: - Negative values, should never happen but better safe than sorry (eg user input in a later stadium)
     
     func test_full_berlin_clock_negative_time_values_returns_all_lamps_off() {
