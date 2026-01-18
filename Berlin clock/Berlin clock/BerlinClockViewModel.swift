@@ -33,5 +33,6 @@ class BerlinClockViewModel {
         
         let minutes = calendar.component(.minute, from: date)
         fiveMinuteLamps = clock.fiveMinutesRow(minutes: minutes)
+        oneMinuteLamps = [.off, .off, .off, .off]
     }
 }
