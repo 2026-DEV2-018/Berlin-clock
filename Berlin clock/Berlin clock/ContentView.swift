@@ -30,6 +30,14 @@ struct ContentView: View {
                         .frame(width: 50, height: 20)
                 }
             }
+            
+            HStack(spacing: 8) {
+                ForEach(0 ..< 11, id: \.self) { oneHourBlock in
+                    Rectangle()
+                        .stroke(.black, lineWidth: 2)
+                        .frame(width: 20, height: 50)
+                }
+            }
         }
         .padding()
     }
