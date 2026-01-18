@@ -91,13 +91,13 @@ final class BerlinClockViewModelTests: XCTestCase {
         XCTAssertEqual(fiveHourLamps, expectedLamps)
     }
     
-    func test_update_sets_correct_five_hour_lamps_for_1_hour() async {
+    func test_update_sets_correct_fiveHourLamps_for_1_hour() async {
         let expectedLamps: [Lamp] = [.off, .off, .off, .off]
         
         await assertFiveHourLamps(hours: 1, expectedLamps: expectedLamps)
     }
     
-    func test_update_sets_correct_five_hour_lamps_for_12_hours() async {
+    func test_update_sets_correct_fiveHourLamps_for_12_hours() async {
         let expectedLamps: [Lamp] = [.red, .red, .off, .off]
         
         await assertFiveHourLamps(hours: 12, expectedLamps: expectedLamps)
