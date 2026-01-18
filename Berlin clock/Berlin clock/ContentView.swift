@@ -21,14 +21,14 @@ struct ContentView: View {
                 .frame(width: 50, height: 50)
             
             
-            createRows(lamps: viewModel.fiveHourLamps, lampHeight: 50)
+            createRows(lamps: viewModel.fiveHourLamps)
             
-            createRows(lamps: viewModel.oneHourLamps, lampHeight: 50)
+            createRows(lamps: viewModel.oneHourLamps)
             
-            createRows(lamps: viewModel.fiveMinuteLamps, lampHeight: 50)
+            createRows(lamps: viewModel.fiveMinuteLamps)
  
-            createRows(lamps: viewModel.oneMinuteLamps, lampHeight: 50)
-                .frame(maxWidth: .infinity)
+            createRows(lamps: viewModel.oneMinuteLamps)
+                
         }
         .padding()
         .onReceive(timer) { time in
@@ -36,11 +36,11 @@ struct ContentView: View {
         }
     }
     
-    func createRows(lamps: [Lamp], lampHeight: CGFloat?) -> some View {
+    func createRows(lamps: [Lamp], lampHeight: CGFloat = 50) -> some View {
         HStack (spacing: 8) {
-            ForEach(lamps, id: \.self) { oneMinuteBlock in
+            ForEach(lamps, id: \.self) { lamp in
                 Rectangle()
-                    .fill(oneMinuteBlock.color)
+                    .fill(lamp.color)
                     .stroke(.black, lineWidth: 2)
                     .frame(height: lampHeight)
                     .frame(maxWidth: .infinity)
