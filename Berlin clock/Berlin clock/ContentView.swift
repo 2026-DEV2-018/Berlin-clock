@@ -6,8 +6,12 @@
 //
 
 import SwiftUI
+import Combine
 
 struct ContentView: View {
+    
+    @State private var viewModel = BerlinClockViewModel(clock: BerlinClock())
+    var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
     var body: some View {
         VStack(spacing: 12) {
@@ -16,7 +20,7 @@ struct ContentView: View {
                 .frame(width: 50, height: 50)
             
             HStack(spacing: 8) {
-                ForEach(0 ..< 4, id: \.self) { fiveHourBlock in
+                ForEach(0 ..< viewModel.fiveHourLamps.count, id: \.self) { fiveHourBlock in
                     Rectangle()
                         .stroke(.black, lineWidth: 2)
                         .frame(width: 50, height: 20)
@@ -24,7 +28,7 @@ struct ContentView: View {
             }
             
             HStack(spacing: 8) {
-                ForEach(0 ..< 4, id: \.self) { oneHourBlock in
+                ForEach(0 ..< viewModel.oneHourLamps.count, id: \.self) { oneHourBlock in
                     Rectangle()
                         .stroke(.black, lineWidth: 2)
                         .frame(width: 50, height: 20)
@@ -32,7 +36,7 @@ struct ContentView: View {
             }
             
             HStack(spacing: 8) {
-                ForEach(0 ..< 11, id: \.self) { fiveMinuteBlock in
+                ForEach(0 ..< viewModel.fiveMinuteLamps.count, id: \.self) { fiveMinuteBlock in
                     Rectangle()
                         .stroke(.black, lineWidth: 2)
                         .frame(width: 20, height: 50)
@@ -40,7 +44,7 @@ struct ContentView: View {
             }
             
             HStack(spacing: 8) {
-                ForEach(0 ..< 4, id: \.self) { oneMinuteBlock in
+                ForEach(0 ..< viewModel.oneMinuteLamps.count, id: \.self) { oneMinuteBlock in
                     Rectangle()
                         .stroke(.black, lineWidth: 2)
                         .frame(width: 50, height: 20)
@@ -48,6 +52,9 @@ struct ContentView: View {
             }
         }
         .padding()
+        .onReceive(timer) { time in
+            viewModel.update(with: time)
+        }
     }
 }
 
