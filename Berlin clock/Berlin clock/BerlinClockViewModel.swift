@@ -16,6 +16,7 @@ class BerlinClockViewModel {
     var fiveHourLamps: [Lamp] = []
     var oneHourLamps: [Lamp] = []
     var fiveMinuteLamps: [Lamp] = []
+    var oneMinuteLamps: [Lamp] = []
     
     init(clock: BerlinClock) {
         self.clock = clock
