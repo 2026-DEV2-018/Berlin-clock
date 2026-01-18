@@ -30,6 +30,7 @@ final class BerlinClockViewModelTests: XCTestCase {
         await viewModel.update(with: date)
     }
     
+    // MARK: - Seconds
 
     func test_update_with_even_seconds_sets_seconds_lamps_on() async {
         let dateConponents = DateComponents(hour: 9, minute: 0, second: 0)
@@ -38,6 +39,15 @@ final class BerlinClockViewModelTests: XCTestCase {
         
         let isSecondsLampIluminated = await viewModel.isSecondsLampIluminated
         XCTAssertTrue(isSecondsLampIluminated)
+    }
+    
+    func test_update_with_uneven_seconds_sets_seconds_lamps_off() async {
+        let dateConponents = DateComponents(hour: 9, minute: 0, second: 1)
+        
+        await updateViewModel(for: dateConponents)
+        
+        let isSecondsLampIluminated = await viewModel.isSecondsLampIluminated
+        XCTAssertFalse(isSecondsLampIluminated)
     }
     
     // MARK: - Correct number of lamps
