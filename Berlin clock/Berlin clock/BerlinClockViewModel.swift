@@ -12,11 +12,13 @@ class BerlinClockViewModel {
     
     private let clock: BerlinClock
     
+    var isSecondsLampIluminated: Bool = false
+    
     init(clock: BerlinClock) {
         self.clock = clock
     }
     
     func update(with date: Date) {
-        
+        isSecondsLampIluminated = true
     }
 }
