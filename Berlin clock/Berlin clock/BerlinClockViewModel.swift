@@ -23,7 +23,7 @@ class BerlinClockViewModel {
         let seconds = Calendar.current.component(.second, from: date)
         isSecondsLampIluminated = clock.isSecondsLampIluminated(seconds: seconds)
         
-        
-        fiveHourLamps = [.off, .off, .off, .off]
+        let hours = Calendar.current.component(.hour, from: date)
+        fiveHourLamps = clock.fiveHoursRow(hours: hours)
     }
 }
