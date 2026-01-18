@@ -26,6 +26,6 @@ class BerlinClockViewModel {
         
         let hours = Calendar.current.component(.hour, from: date)
         fiveHourLamps = clock.fiveHoursRow(hours: hours)
-        oneHourLamps = [.off, .off, .off, .off]
+        oneHourLamps = clock.oneHoursRow(hours: hours)
     }
 }
