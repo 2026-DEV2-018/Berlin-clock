@@ -23,7 +23,7 @@ final class BerlinClockViewModelTests: XCTestCase {
         XCTAssertTrue(isSecondsLampIluminated)
     }
     
-    func test_update_sets_five_hour_lamps_for_date() async {
+    func test_update_sets_five_hour_lamps_for_date_with_correct_number_of_lamps() async {
         let clock = await BerlinClock()
         let viewModel = await BerlinClockViewModel(clock: clock)
         
