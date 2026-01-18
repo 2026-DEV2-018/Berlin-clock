@@ -9,11 +9,23 @@ import XCTest
 @testable import Berlin_clock
 
 final class BerlinClockViewModelTests: XCTestCase {
+    
+    private var clock: BerlinClock!
+    private var viewModel: BerlinClockViewModel!
+    
+    override func setUp() async throws {
+        try await super.setUp()
+        clock = await BerlinClock()
+        viewModel = await BerlinClockViewModel(clock: clock)
+    }
+    
+    override func tearDown() async throws {
+        clock = nil
+        viewModel = nil
+        try await super.tearDown()
+    }
 
     func test_update_with_even_seconds_sets_seconds_lamps_on() async {
-        let clock = await BerlinClock()
-        let viewModel = await BerlinClockViewModel(clock: clock)
-        
         let dateConponents = DateComponents(hour: 9, minute: 0, second: 0)
         let date = Calendar.current.date(from: dateConponents)!
         
@@ -24,16 +36,12 @@ final class BerlinClockViewModelTests: XCTestCase {
     }
     
     func test_update_sets_five_hour_lamps_for_date_with_correct_number_of_lamps() async {
-        let clock = await BerlinClock()
-        let viewModel = await BerlinClockViewModel(clock: clock)
-        
         let dateConponents = DateComponents(hour: 9, minute: 0, second: 0)
         let date = Calendar.current.date(from: dateConponents)!
         
         await viewModel.update(with: date)
         
         let fiveHourLamps = await viewModel.fiveHourLamps
-        
         
         XCTAssertEqual(fiveHourLamps.count, 4)
     }
