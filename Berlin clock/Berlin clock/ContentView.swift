@@ -16,36 +16,41 @@ struct ContentView: View {
     var body: some View {
         VStack(spacing: 12) {
             Circle()
+                .fill(viewModel.isSecondsLampIluminated ? .yellow : .clear)
                 .stroke(.black, lineWidth: 2)
                 .frame(width: 50, height: 50)
             
             HStack(spacing: 8) {
-                ForEach(0 ..< viewModel.fiveHourLamps.count, id: \.self) { fiveHourBlock in
+                ForEach(viewModel.fiveHourLamps, id: \.self) { fiveHourBlock in
                     Rectangle()
+                        .fill(fiveHourBlock.isOn ? .red : .clear)
                         .stroke(.black, lineWidth: 2)
                         .frame(width: 50, height: 20)
                 }
             }
             
             HStack(spacing: 8) {
-                ForEach(0 ..< viewModel.oneHourLamps.count, id: \.self) { oneHourBlock in
+                ForEach(viewModel.oneHourLamps, id: \.self) { oneHourBlock in
                     Rectangle()
+                        .fill(oneHourBlock.isOn ? .red : .clear)
                         .stroke(.black, lineWidth: 2)
                         .frame(width: 50, height: 20)
                 }
             }
             
             HStack(spacing: 8) {
-                ForEach(0 ..< viewModel.fiveMinuteLamps.count, id: \.self) { fiveMinuteBlock in
+                ForEach(viewModel.fiveMinuteLamps, id: \.self) { fiveMinuteBlock in
                     Rectangle()
+                        
                         .stroke(.black, lineWidth: 2)
                         .frame(width: 20, height: 50)
                 }
             }
             
             HStack(spacing: 8) {
-                ForEach(0 ..< viewModel.oneMinuteLamps.count, id: \.self) { oneMinuteBlock in
+                ForEach(viewModel.oneMinuteLamps, id: \.self) { oneMinuteBlock in
                     Rectangle()
+                        .fill(oneMinuteBlock.isOn ? .yellow : .yellow)
                         .stroke(.black, lineWidth: 2)
                         .frame(width: 50, height: 20)
                 }
