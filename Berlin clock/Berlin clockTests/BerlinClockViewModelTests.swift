@@ -10,9 +10,10 @@ import XCTest
 
 final class BerlinClockViewModelTests: XCTestCase {
 
-    func test_update_passes_correct_time_values_to_berlin_clock() {
-        let berlinClock = BerlinClock()
-        let viewModel = BerlinClockViewModel()
+    func test_update_passes_correct_time_values_to_berlin_clock() async {
+        let clock = await BerlinClock()
+        let viewModel = await BerlinClockViewModel()
+
     }
 
 }
