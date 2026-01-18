@@ -22,6 +22,14 @@ struct ContentView: View {
                         .frame(width: 50, height: 20)
                 }
             }
+            
+            HStack(spacing: 8) {
+                ForEach(0 ..< 4, id: \.self) { oneHourBlock in
+                    Rectangle()
+                        .stroke(.black, lineWidth: 2)
+                        .frame(width: 50, height: 20)
+                }
+            }
         }
         .padding()
     }
