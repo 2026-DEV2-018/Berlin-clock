@@ -15,4 +15,8 @@ class BerlinClockViewModel {
     init(clock: BerlinClock) {
         self.clock = clock
     }
+    
+    func update(with date: Date) {
+        
+    }
 }

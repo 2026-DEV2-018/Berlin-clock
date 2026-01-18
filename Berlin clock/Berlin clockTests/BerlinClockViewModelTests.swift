@@ -17,7 +17,7 @@ final class BerlinClockViewModelTests: XCTestCase {
         let dateConponents = DateComponents(hour: 9, minute: 0, second: 0)
         let date = Calendar.current.date(from: dateConponents)!
         
-        viewModel.update(with: date)
+        await viewModel.update(with: date)
         
         
     }
