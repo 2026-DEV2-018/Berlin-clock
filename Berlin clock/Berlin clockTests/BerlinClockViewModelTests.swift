@@ -133,5 +133,7 @@ final class BerlinClockViewModelTests: XCTestCase {
         let date = Calendar.current.date(from: dateComponents)!
         
         let timeString = await viewModel.formattedTime(for: date)
+        
+        XCTAssertEqual(timeString, "09:58:03")
     }
 }
