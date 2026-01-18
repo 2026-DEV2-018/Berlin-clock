@@ -52,7 +52,7 @@ final class BerlinClockViewModelTests: XCTestCase {
     
     // MARK: - Correct number of lamps
     
-    func test_update_sets_five_hour_lamps_for_date_with_correct_number_of_lamps() async {
+    func test_update_sets_fiveHourLamps_for_date_with_correct_number_of_lamps() async {
         let dateComponents = DateComponents(hour: 9, minute: 0, second: 0)
         
         await updateViewModel(for: dateComponents)
