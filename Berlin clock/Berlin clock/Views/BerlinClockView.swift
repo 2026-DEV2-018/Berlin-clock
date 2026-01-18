@@ -51,7 +51,7 @@ struct BerlinClockView: View {
     
     private func createLampsRow(lamps: [Lamp], lampHeight: CGFloat = .height20) -> some View {
         HStack (spacing: .padding8) {
-            ForEach(lamps, id: \.self) { lamp in
+            ForEach(lamps.enumerated(), id: \.offset) { _, lamp in
                 Rectangle()
                     .fill(lamp.color)
                     .stroke(.black, lineWidth: .lineWidth)
