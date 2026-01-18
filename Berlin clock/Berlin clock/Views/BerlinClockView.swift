@@ -11,6 +11,7 @@ import Combine
 struct BerlinClockView: View {
     
     @State private var viewModel = BerlinClockViewModel(clock: BerlinClock())
+    @State private var timeString: String = ""
     var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
     var body: some View {
@@ -25,11 +26,15 @@ struct BerlinClockView: View {
             createLampsRow(lamps: viewModel.fiveMinuteLamps, lampHeight: 50)
  
             createLampsRow(lamps: viewModel.oneMinuteLamps)
+            
+            Text(timeString)
+                .bold()
                 
         }
         .padding()
         .onReceive(timer) { time in
             viewModel.update(with: time)
+            timeString = viewModel.formattedTime(for: time)
         }
     }
     
