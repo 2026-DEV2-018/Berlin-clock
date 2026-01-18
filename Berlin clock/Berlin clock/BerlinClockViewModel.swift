@@ -10,4 +10,9 @@ import Foundation
 @MainActor
 class BerlinClockViewModel {
     
+    private let clock: BerlinClock
+    
+    init(clock: BerlinClock) {
+        self.clock = clock
+    }
 }
