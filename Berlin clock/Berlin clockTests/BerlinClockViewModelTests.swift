@@ -88,7 +88,9 @@ final class BerlinClockViewModelTests: XCTestCase {
         await updateViewModel(for: dateConponents)
         let fiveHourLamps = await viewModel.fiveHourLamps
         
-        XCTAssertEqual(fiveHourLamps, expectedLamps)
+        XCTAssertEqual(fiveHourLamps,
+                       expectedLamps,
+                       "fiveHourLamps does not match expected lamps for\n \(hours) hours\n expected: \(expectedLamps.map { $0.rawValue })\n got: \(fiveHourLamps.map { $0.rawValue })")
     }
     
     func test_update_sets_correct_fiveHourLamps_for_midnight() async {
@@ -123,7 +125,9 @@ final class BerlinClockViewModelTests: XCTestCase {
         await updateViewModel(for: dateComponents)
         let oneHourLamps = await viewModel.oneHourLamps
         
-        XCTAssertEqual(oneHourLamps, expectedLamps)
+        XCTAssertEqual(oneHourLamps,
+                       expectedLamps,
+                       "oneHourLamps does not match expected lamps for\n \(hours) hours\n expected: \(expectedLamps.map { $0.rawValue })\n got: \(oneHourLamps.map { $0.rawValue })")
     }
     
     func test_update_sets_correct_oneHourLamps_for_midnight() async {
@@ -154,7 +158,9 @@ final class BerlinClockViewModelTests: XCTestCase {
         await updateViewModel(for: dateComponents)
         let fiveMinuteLamps = await viewModel.fiveMinuteLamps
         
-        XCTAssertEqual(fiveMinuteLamps, expectedLamps)
+        XCTAssertEqual(fiveMinuteLamps,
+                       expectedLamps,
+                       "fiveMinuteLamps does not match expected lamps for\n \(minutes) minutes\n expected: \(expectedLamps.map { $0.rawValue })\n got: \(fiveMinuteLamps.map { $0.rawValue })")
     }
     
     func test_update_sets_correct_fiveMinuteLamps_for_midnight() async {
