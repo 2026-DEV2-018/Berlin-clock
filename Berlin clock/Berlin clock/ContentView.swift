@@ -15,19 +15,16 @@ struct ContentView: View {
 
     var body: some View {
         VStack(spacing: 12) {
-            Circle()
-                .fill(viewModel.isSecondsLampIluminated ? .yellow : .clear)
-                .stroke(.black, lineWidth: 2)
-                .frame(width: 50, height: 50)
             
+            secondsLamp
             
-            createRows(lamps: viewModel.fiveHourLamps)
+            createLampsRow(lamps: viewModel.fiveHourLamps)
             
-            createRows(lamps: viewModel.oneHourLamps)
+            createLampsRow(lamps: viewModel.oneHourLamps)
             
-            createRows(lamps: viewModel.fiveMinuteLamps)
+            createLampsRow(lamps: viewModel.fiveMinuteLamps, lampHeight: 50)
  
-            createRows(lamps: viewModel.oneMinuteLamps)
+            createLampsRow(lamps: viewModel.oneMinuteLamps)
                 
         }
         .padding()
@@ -36,7 +33,14 @@ struct ContentView: View {
         }
     }
     
-    func createRows(lamps: [Lamp], lampHeight: CGFloat = 50) -> some View {
+    var secondsLamp: some View {
+        Circle()
+            .fill(viewModel.isSecondsLampIluminated ? .yellow : .clear)
+            .stroke(.black, lineWidth: 2)
+            .frame(width: 50, height: 50)
+    }
+    
+    func createLampsRow(lamps: [Lamp], lampHeight: CGFloat = 20) -> some View {
         HStack (spacing: 8) {
             ForEach(lamps, id: \.self) { lamp in
                 Rectangle()
