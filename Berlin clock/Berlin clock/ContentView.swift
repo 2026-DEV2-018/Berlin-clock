@@ -32,10 +32,18 @@ struct ContentView: View {
             }
             
             HStack(spacing: 8) {
-                ForEach(0 ..< 11, id: \.self) { oneHourBlock in
+                ForEach(0 ..< 11, id: \.self) { fiveMinuteBlock in
                     Rectangle()
                         .stroke(.black, lineWidth: 2)
                         .frame(width: 20, height: 50)
+                }
+            }
+            
+            HStack(spacing: 8) {
+                ForEach(0 ..< 4, id: \.self) { oneMinuteBlock in
+                    Rectangle()
+                        .stroke(.black, lineWidth: 2)
+                        .frame(width: 50, height: 20)
                 }
             }
         }
