@@ -10,9 +10,11 @@ import Combine
 
 struct BerlinClockView: View {
     
+    // MARK: - Properties
+    
     @State private var viewModel = BerlinClockViewModel(clock: BerlinClock())
     @State private var timeString: String = ""
-    var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
     var body: some View {
         VStack(spacing: .padding12) {
@@ -38,14 +40,16 @@ struct BerlinClockView: View {
         }
     }
     
-    var secondsLamp: some View {
+    // MARK: - View methods
+    
+    private var secondsLamp: some View {
         Circle()
             .fill(viewModel.isSecondsLampIluminated ? .yellow : .clear)
             .stroke(.black, lineWidth: .lineWidth)
             .frame(width: .height50, height: .height50)
     }
     
-    func createLampsRow(lamps: [Lamp], lampHeight: CGFloat = .height20) -> some View {
+    private func createLampsRow(lamps: [Lamp], lampHeight: CGFloat = .height20) -> some View {
         HStack (spacing: .padding8) {
             ForEach(lamps, id: \.self) { lamp in
                 Rectangle()

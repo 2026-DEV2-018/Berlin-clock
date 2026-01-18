@@ -9,10 +9,13 @@ import Foundation
 
 struct BerlinClock {
     
-    let numberOfFiveHourLamps = 4
-    let numberOfOneHourLamps = 4
-    let numberOfFiveMinuteLamps = 11
-    let numberOfOneMinuteLamps = 4
+    // MARK: - Private  properties
+    private let numberOfFiveHourLamps = 4
+    private let numberOfOneHourLamps = 4
+    private let numberOfFiveMinuteLamps = 11
+    private let numberOfOneMinuteLamps = 4
+    
+    // MARK: - Lamp row methods
     
     func isSecondsLampIluminated(seconds: Int) -> Bool {
         guard seconds >= 0 && seconds <= 59 else { return false }

@@ -11,7 +11,7 @@ import Foundation
 @Observable
 class BerlinClockViewModel {
     
-    private let clock: BerlinClock
+    // MARK: - Private properties
     
     @ObservationIgnored
     private lazy var timeFormatter: DateFormatter = {
@@ -20,15 +20,23 @@ class BerlinClockViewModel {
         return formatter
     }()
     
-    var isSecondsLampIluminated: Bool = false
-    var fiveHourLamps: [Lamp] = []
-    var oneHourLamps: [Lamp] = []
-    var fiveMinuteLamps: [Lamp] = []
-    var oneMinuteLamps: [Lamp] = []
+    private let clock: BerlinClock
+    
+    // MARK: - Public properties
+    
+    private(set) var isSecondsLampIluminated: Bool = false
+    private(set) var fiveHourLamps: [Lamp] = []
+    private(set) var oneHourLamps: [Lamp] = []
+    private(set) var fiveMinuteLamps: [Lamp] = []
+    private(set) var oneMinuteLamps: [Lamp] = []
+    
+    // MARK: - Initializer
     
     init(clock: BerlinClock) {
         self.clock = clock
     }
+    
+    // MARK: - Methods
     
     func update(with date: Date) {
         let calendar = Calendar.current
