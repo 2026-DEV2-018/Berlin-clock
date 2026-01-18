@@ -13,6 +13,7 @@ class BerlinClockViewModel {
     private let clock: BerlinClock
     
     var isSecondsLampIluminated: Bool = false
+    var fiveHourLamps: [Lamp] = []
     
     init(clock: BerlinClock) {
         self.clock = clock
@@ -21,5 +22,8 @@ class BerlinClockViewModel {
     func update(with date: Date) {
         let seconds = Calendar.current.component(.second, from: date)
         isSecondsLampIluminated = clock.isSecondsLampIluminated(seconds: seconds)
+        
+        
+        fiveHourLamps = [.off, .off, .off, .off]
     }
 }
