@@ -11,7 +11,7 @@ import SwiftUI
 struct Berlin_clockApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            BerlinClockView()
         }
     }
 }

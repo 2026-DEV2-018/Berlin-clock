@@ -8,7 +8,7 @@
 import SwiftUI
 import Combine
 
-struct ContentView: View {
+struct BerlinClockView: View {
     
     @State private var viewModel = BerlinClockViewModel(clock: BerlinClock())
     var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
@@ -55,5 +55,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    BerlinClockView()
 }
