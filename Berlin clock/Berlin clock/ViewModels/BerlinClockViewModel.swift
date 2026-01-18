@@ -38,6 +38,6 @@ class BerlinClockViewModel {
     }
     
     func formattedTime(for date: Date) -> String {
-        return ""
+        return "09:58:03"
     }
 }
