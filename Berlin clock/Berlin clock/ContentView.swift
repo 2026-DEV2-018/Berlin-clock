@@ -20,46 +20,33 @@ struct ContentView: View {
                 .stroke(.black, lineWidth: 2)
                 .frame(width: 50, height: 50)
             
-            HStack(spacing: 8) {
-                ForEach(viewModel.fiveHourLamps, id: \.self) { fiveHourBlock in
-                    Rectangle()
-                        .fill(fiveHourBlock.isOn ? .red : .clear)
-                        .stroke(.black, lineWidth: 2)
-                        .frame(width: 50, height: 20)
-                }
-            }
             
-            HStack(spacing: 8) {
-                ForEach(viewModel.oneHourLamps, id: \.self) { oneHourBlock in
-                    Rectangle()
-                        .fill(oneHourBlock.isOn ? .red : .clear)
-                        .stroke(.black, lineWidth: 2)
-                        .frame(width: 50, height: 20)
-                }
-            }
+            createRows(lamps: viewModel.fiveHourLamps, lampHeight: 50)
             
-            HStack(spacing: 8) {
-                ForEach(viewModel.fiveMinuteLamps, id: \.self) { fiveMinuteBlock in
-                    Rectangle()
-                        
-                        .stroke(.black, lineWidth: 2)
-                        .frame(width: 20, height: 50)
-                }
-            }
+            createRows(lamps: viewModel.oneHourLamps, lampHeight: 50)
             
-            HStack(spacing: 8) {
-                ForEach(viewModel.oneMinuteLamps, id: \.self) { oneMinuteBlock in
-                    Rectangle()
-                        .fill(oneMinuteBlock.isOn ? .yellow : .yellow)
-                        .stroke(.black, lineWidth: 2)
-                        .frame(width: 50, height: 20)
-                }
-            }
+            createRows(lamps: viewModel.fiveMinuteLamps, lampHeight: 50)
+ 
+            createRows(lamps: viewModel.oneMinuteLamps, lampHeight: 50)
+                .frame(maxWidth: .infinity)
         }
         .padding()
         .onReceive(timer) { time in
             viewModel.update(with: time)
         }
+    }
+    
+    func createRows(lamps: [Lamp], lampHeight: CGFloat?) -> some View {
+        HStack (spacing: 8) {
+            ForEach(lamps, id: \.self) { oneMinuteBlock in
+                Rectangle()
+                    .fill(oneMinuteBlock.color)
+                    .stroke(.black, lineWidth: 2)
+                    .frame(height: lampHeight)
+                    .frame(maxWidth: .infinity)
+            }
+        }
+        .frame(maxWidth: .infinity)
     }
 }
 
