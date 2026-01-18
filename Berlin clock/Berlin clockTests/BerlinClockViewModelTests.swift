@@ -120,4 +120,12 @@ final class BerlinClockViewModelTests: XCTestCase {
         XCTAssertEqual(newOneMinuteLamps, [.yellow, .off,.off, .off])
         XCTAssertFalse(newIsSecondsLampIlluminated)
     }
+    
+    // MARK: - DateFormatter
+    
+    func test_formattedTime_returns_the_correct_time_format() async {
+        let dateComponents = DateComponents(hour: 9, minute: 0, second: 0)
+        let timeString = await viewModel.formattedTime(forDate: dateComponents)
+        
+    }
 }
