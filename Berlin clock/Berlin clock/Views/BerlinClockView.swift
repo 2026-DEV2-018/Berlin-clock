@@ -15,7 +15,7 @@ struct BerlinClockView: View {
     var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
     var body: some View {
-        VStack(spacing: 12) {
+        VStack(spacing: .padding12) {
             
             secondsLamp
             
@@ -23,7 +23,7 @@ struct BerlinClockView: View {
             
             createLampsRow(lamps: viewModel.oneHourLamps)
             
-            createLampsRow(lamps: viewModel.fiveMinuteLamps, lampHeight: 50)
+            createLampsRow(lamps: viewModel.fiveMinuteLamps, lampHeight: .height50)
  
             createLampsRow(lamps: viewModel.oneMinuteLamps)
             
@@ -41,16 +41,16 @@ struct BerlinClockView: View {
     var secondsLamp: some View {
         Circle()
             .fill(viewModel.isSecondsLampIluminated ? .yellow : .clear)
-            .stroke(.black, lineWidth: 2)
-            .frame(width: 50, height: 50)
+            .stroke(.black, lineWidth: .lineWidth)
+            .frame(width: .height50, height: .height50)
     }
     
-    func createLampsRow(lamps: [Lamp], lampHeight: CGFloat = 20) -> some View {
-        HStack (spacing: 8) {
+    func createLampsRow(lamps: [Lamp], lampHeight: CGFloat = .height20) -> some View {
+        HStack (spacing: .padding8) {
             ForEach(lamps, id: \.self) { lamp in
                 Rectangle()
                     .fill(lamp.color)
-                    .stroke(.black, lineWidth: 2)
+                    .stroke(.black, lineWidth: .lineWidth)
                     .frame(height: lampHeight)
                     .frame(maxWidth: .infinity)
             }
