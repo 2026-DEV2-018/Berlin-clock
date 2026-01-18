@@ -12,8 +12,7 @@ final class BerlinClockViewModelTests: XCTestCase {
 
     func test_update_passes_correct_time_values_to_berlin_clock() async {
         let clock = await BerlinClock()
-        let viewModel = await BerlinClockViewModel()
-
+        let viewModel = await BerlinClockViewModel(clock: clock)
     }
 
 }
