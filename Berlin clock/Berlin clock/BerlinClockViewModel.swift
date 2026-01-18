@@ -22,14 +22,15 @@ class BerlinClockViewModel {
     }
     
     func update(with date: Date) {
-        let seconds = Calendar.current.component(.second, from: date)
+        let calendar = Calendar.current
+        let seconds = calendar.component(.second, from: date)
         isSecondsLampIluminated = clock.isSecondsLampIluminated(seconds: seconds)
         
-        let hours = Calendar.current.component(.hour, from: date)
+        let hours = calendar.component(.hour, from: date)
         fiveHourLamps = clock.fiveHoursRow(hours: hours)
         oneHourLamps = clock.oneHoursRow(hours: hours)
         
-        let minutes = Calendar.current.component(.minute, from: date)
+        let minutes = calendar.component(.minute, from: date)
         fiveMinuteLamps = clock.fiveMinutesRow(minutes: minutes)
     }
 }
