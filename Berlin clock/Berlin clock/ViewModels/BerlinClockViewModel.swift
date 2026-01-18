@@ -36,4 +36,8 @@ class BerlinClockViewModel {
         fiveMinuteLamps = clock.fiveMinutesRow(minutes: minutes)
         oneMinuteLamps = clock.oneMinutesRow(minutes: minutes)
     }
+    
+    func formattedTime(for date: Date) -> String {
+        return ""
+    }
 }

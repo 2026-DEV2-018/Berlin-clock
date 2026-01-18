@@ -124,8 +124,14 @@ final class BerlinClockViewModelTests: XCTestCase {
     // MARK: - DateFormatter
     
     func test_formattedTime_returns_the_correct_time_format() async {
-        let dateComponents = DateComponents(hour: 9, minute: 0, second: 0)
-        let timeString = await viewModel.formattedTime(forDate: dateComponents)
+        let dateComponents = DateComponents(year: 2026,
+                                            month: 0,
+                                            day: 13,
+                                            hour: 9,
+                                            minute: 58,
+                                            second: 3)
+        let date = Calendar.current.date(from: dateComponents)!
         
+        let timeString = await viewModel.formattedTime(for: date)
     }
 }
