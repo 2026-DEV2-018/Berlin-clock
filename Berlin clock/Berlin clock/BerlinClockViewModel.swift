@@ -19,6 +19,7 @@ class BerlinClockViewModel {
     }
     
     func update(with date: Date) {
-        isSecondsLampIluminated = true
+        let seconds = Calendar.current.component(.second, from: date)
+        isSecondsLampIluminated = clock.isSecondsLampIluminated(seconds: seconds)
     }
 }
