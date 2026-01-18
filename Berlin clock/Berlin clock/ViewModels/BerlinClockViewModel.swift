@@ -16,7 +16,7 @@ class BerlinClockViewModel {
     @ObservationIgnored
     private lazy var timeFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.timeStyle = .medium
+        formatter.timeStyle = .short
         return formatter
     }()
     
