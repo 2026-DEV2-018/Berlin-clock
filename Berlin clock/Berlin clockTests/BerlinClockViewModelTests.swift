@@ -209,13 +209,17 @@ final class BerlinClockViewModelTests: XCTestCase {
         XCTAssertEqual(oneMinuteLamps, expectedLamps)
     }
     
+    func test_update_sets_correct_oneMinuteLamps_for_midnight() async {
+        let expectedLamps: [Lamp] = [.off, .off, .off, .off]
+        await assertOneMinuteLamps(minutes: 0, expectedLamps: expectedLamps)
+    }
+    
     func test_update_sets_correct_oneMinuteLamps_for_1_minute() async {
         let expectedLamps: [Lamp] = [.yellow, .off, .off, .off]
         await assertOneMinuteLamps(minutes: 1, expectedLamps: expectedLamps)
     }
     
     func test_update_sets_correct_oneMinuteLamps_for_4_minuts() async {
-        
         let expectedLamps: [Lamp] = [.yellow, .yellow, .yellow, .yellow]
         await assertOneMinuteLamps(minutes: 4, expectedLamps: expectedLamps)
     }
