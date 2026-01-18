@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum Lamp: String {
     case off = "O"
@@ -19,6 +20,14 @@ extension Lamp {
         switch self {
         case .off: return false
         case .red, .yellow: return true
+        }
+    }
+    
+    var color: Color {
+        switch self {
+        case .off: return .clear
+        case .red: return .red
+        case .yellow: return .yellow
         }
     }
 }
