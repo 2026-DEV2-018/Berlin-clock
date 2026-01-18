@@ -182,4 +182,9 @@ final class BerlinClockViewModelTests: XCTestCase {
         let expectedLamps: [Lamp] = [.yellow, .yellow, .red, .yellow, .yellow, .red, .yellow, .yellow, .red, .yellow, .yellow]
         await assertFiveMinuteLamps(minutes: 55, expectedLamps: expectedLamps)
     }
+    
+    func test_update_sets_correct_fiveMinuteLamps_for_59_minutes() async {
+        let expectedLamps: [Lamp] = [.yellow, .yellow, .red, .yellow, .yellow, .red, .yellow, .yellow, .red, .yellow, .yellow]
+        await assertFiveMinuteLamps(minutes: 59, expectedLamps: expectedLamps)
+    }
 }
