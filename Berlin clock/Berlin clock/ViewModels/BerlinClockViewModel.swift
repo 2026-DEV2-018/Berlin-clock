@@ -13,6 +13,13 @@ class BerlinClockViewModel {
     
     private let clock: BerlinClock
     
+    @ObservationIgnored
+    private lazy var timeFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.timeStyle = .medium
+        return formatter
+    }()
+    
     var isSecondsLampIluminated: Bool = false
     var fiveHourLamps: [Lamp] = []
     var oneHourLamps: [Lamp] = []
@@ -38,8 +45,6 @@ class BerlinClockViewModel {
     }
     
     func formattedTime(for date: Date) -> String {
-        let dateformatter = DateFormatter()
-        dateformatter.timeStyle = .medium
-        return dateformatter.string(from: date)
+        return timeFormatter.string(from: date)
     }
 }
