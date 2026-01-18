@@ -19,7 +19,8 @@ final class BerlinClockViewModelTests: XCTestCase {
         
         await viewModel.update(with: date)
         
-        XCTAssertTrue(viewModel.isSecondsLampIluminated)
+        let isSecondsLampIluminated = await viewModel.isSecondsLampIluminated
+        XCTAssertTrue(isSecondsLampIluminated)
     }
 
 }
