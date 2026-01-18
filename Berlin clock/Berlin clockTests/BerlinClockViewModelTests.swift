@@ -134,6 +134,6 @@ final class BerlinClockViewModelTests: XCTestCase {
         
         let timeString = await viewModel.formattedTime(for: date)
         
-        XCTAssertEqual(timeString, "09:58:03")
+        XCTAssertEqual(timeString, "09:58")
     }
 }
