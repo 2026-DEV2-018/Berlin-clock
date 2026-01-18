@@ -52,7 +52,8 @@ final class BerlinClockViewModelTests: XCTestCase {
         
         await viewModel.update(with: date)
         
-        XCTAssertEqual(viewModel.oneHourLamps, 4)
+        let oneHourLamps = await viewModel.oneHourLamps
+        XCTAssertEqual(oneHourLamps.count, 4)
     }
 
 }
