@@ -157,4 +157,14 @@ final class BerlinClockViewModelTests: XCTestCase {
         let expectedLamps: [Lamp] = [.off, .off, .off, .off, .off, .off, .off, .off, .off, .off, .off]
         XCTAssertEqual(fiveMinuteLamps, expectedLamps)
     }
+    
+    func test_update_sets_correct_fiveMinuteLamps_for_1_minute() async {
+        let dateComponents = DateComponents(hour: 0, minute: 1, second: 0)
+        
+        await updateViewModel(for: dateComponents)
+        let fiveMinuteLamps = await viewModel.fiveMinuteLamps
+        
+        let expectedLamps: [Lamp] = [.off, .off, .off, .off, .off, .off, .off, .off, .off, .off, .off]
+        XCTAssertEqual(fiveMinuteLamps, expectedLamps)
+    }
 }
