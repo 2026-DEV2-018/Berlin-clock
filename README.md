@@ -11,6 +11,7 @@ I chose to use MVVM to separate the concerns and make it easier to test.
 After finishing the Berlin clock I started with writing tests to start developing the **BerlinClockViewModel**.
 
 <img width="682" height="684" alt="Kata_BerlinClock" src="https://github.com/user-attachments/assets/149e77db-4b43-4b51-ac93-69c1615b19ac" />
+
 ## Rules
 The Berlin Clock (Mengenlehreclock or Berlin Uhr) is a clock that tells the time using a series of illuminated coloured blocks, as you can see in the picture for this project.
 
