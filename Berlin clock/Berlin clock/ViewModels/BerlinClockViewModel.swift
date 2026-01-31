@@ -6,8 +6,8 @@
 //
 
 import Foundation
+import Combine
 
-@MainActor
 @Observable
 class BerlinClockViewModel {
     
@@ -30,6 +30,8 @@ class BerlinClockViewModel {
     private(set) var fiveMinuteLamps: [Lamp] = []
     private(set) var oneMinuteLamps: [Lamp] = []
     
+    private(set) var digitalTime: String = ""
+    
     // MARK: - Initializer
     
     init(clock: BerlinClock) {
@@ -50,9 +52,7 @@ class BerlinClockViewModel {
         let minutes = calendar.component(.minute, from: date)
         fiveMinuteLamps = clock.fiveMinutesRow(minutes: minutes)
         oneMinuteLamps = clock.oneMinutesRow(minutes: minutes)
-    }
-    
-    func formattedTime(for date: Date) -> String {
-        return timeFormatter.string(from: date)
+        
+        digitalTime = timeFormatter.string(from: date)
     }
 }
