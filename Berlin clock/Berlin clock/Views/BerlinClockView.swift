@@ -13,7 +13,6 @@ struct BerlinClockView: View {
     // MARK: - Properties
     
     @State private var viewModel = BerlinClockViewModel(clock: BerlinClock())
-    @State private var timeString: String = ""
     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
     var body: some View {
@@ -28,15 +27,14 @@ struct BerlinClockView: View {
             createLampsRow(lamps: viewModel.fiveMinuteLamps, lampHeight: .height50)
  
             createLampsRow(lamps: viewModel.oneMinuteLamps)
-            
-            Text(timeString)
+                        
+            Text(viewModel.digitalTime)
                 .bold()
                 
         }
         .padding()
         .onReceive(timer) { time in
             viewModel.update(with: time)
-            timeString = viewModel.formattedTime(for: time)
         }
     }
     
