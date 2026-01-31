@@ -13,93 +13,93 @@ final class BerlinClockViewModelTests: XCTestCase {
     private var clock: BerlinClock!
     private var viewModel: BerlinClockViewModel!
     
-    override func setUp() async throws {
-        try await super.setUp()
-        clock = await BerlinClock()
-        viewModel = await BerlinClockViewModel(clock: clock)
+    override func setUp() {
+        super.setUp()
+        clock =  BerlinClock()
+        viewModel =  BerlinClockViewModel(clock: clock)
     }
     
-    override func tearDown() async throws {
+    override func tearDown() {
         clock = nil
         viewModel = nil
-        try await super.tearDown()
+        super.tearDown()
     }
     
-    private func updateViewModel(for dateComponents: DateComponents) async {
+    private func updateViewModel(for dateComponents: DateComponents) {
         let date = Calendar.current.date(from: dateComponents)!
-        await viewModel.update(with: date)
+        viewModel.update(with: date)
     }
     
     // MARK: - Seconds
 
-    func test_update_with_even_seconds_sets_seconds_lamps_on() async {
+    func test_update_with_even_seconds_sets_seconds_lamps_on() {
         let dateConponents = DateComponents(hour: 9, minute: 0, second: 0)
         
-        await updateViewModel(for: dateConponents)
+         updateViewModel(for: dateConponents)
         
-        let isSecondsLampIluminated = await viewModel.isSecondsLampIluminated
+        let isSecondsLampIluminated =  viewModel.isSecondsLampIluminated
         XCTAssertTrue(isSecondsLampIluminated)
     }
     
-    func test_update_with_uneven_seconds_sets_seconds_lamps_off() async {
+    func test_update_with_uneven_seconds_sets_seconds_lamps_off() {
         let dateConponents = DateComponents(hour: 9, minute: 0, second: 1)
         
-        await updateViewModel(for: dateConponents)
+        updateViewModel(for: dateConponents)
         
-        let isSecondsLampIluminated = await viewModel.isSecondsLampIluminated
+        let isSecondsLampIluminated = viewModel.isSecondsLampIluminated
         XCTAssertFalse(isSecondsLampIluminated)
     }
     
     // MARK: - Correct number of lamps
     
-    func test_update_sets_fiveHourLamps_for_date_with_correct_number_of_lamps() async {
+    func test_update_sets_fiveHourLamps_for_date_with_correct_number_of_lamps() {
         let dateComponents = DateComponents(hour: 9, minute: 0, second: 0)
         
-        await updateViewModel(for: dateComponents)
+        updateViewModel(for: dateComponents)
         
-        let fiveHourLamps = await viewModel.fiveHourLamps
+        let fiveHourLamps = viewModel.fiveHourLamps
         
         XCTAssertEqual(fiveHourLamps.count, 4)
     }
     
-    func test_update_sets_oneHoursLamps_for_date_with_correct_number_of_lamps() async {
+    func test_update_sets_oneHoursLamps_for_date_with_correct_number_of_lamps() {
         let dateComponents = DateComponents(hour: 9, minute: 0, second: 0)
 
-        await updateViewModel(for: dateComponents)
+        updateViewModel(for: dateComponents)
         
-        let oneHourLamps = await viewModel.oneHourLamps
+        let oneHourLamps = viewModel.oneHourLamps
         XCTAssertEqual(oneHourLamps.count, 4)
     }
     
-    func test_update_sets_fiveMinuteLamps_for_date_with_correct_number_of_lamps() async {
+    func test_update_sets_fiveMinuteLamps_for_date_with_correct_number_of_lamps() {
         let dateComponents = DateComponents(hour: 9, minute: 0, second: 0)
         
-        await updateViewModel(for: dateComponents)
+        updateViewModel(for: dateComponents)
         
-        let fiveMinuteLamps = await viewModel.fiveMinuteLamps
+        let fiveMinuteLamps = viewModel.fiveMinuteLamps
         XCTAssertEqual(fiveMinuteLamps.count, 11)
     }
     
-    func test_update_sets_oneMinuteLamps_for_date_with_correct_number_of_lamps() async {
+    func test_update_sets_oneMinuteLamps_for_date_with_correct_number_of_lamps() {
         let dateComponents = DateComponents(hour: 9, minute: 0, second: 0)
         
-        await updateViewModel(for: dateComponents)
+        updateViewModel(for: dateComponents)
         
-        let oneMinuteLamps = await viewModel.oneMinuteLamps
+        let oneMinuteLamps = viewModel.oneMinuteLamps
         
         XCTAssertEqual(oneMinuteLamps.count, 4)
     }
     
     // MARK: - Updates
     
-    func test_update_overrides_previous_state() async {
+    func test_update_overrides_previous_state() {
         
-        await updateViewModel(for: DateComponents(hour: 12, minute: 0, second: 0))
-        let fiveHourLamps = await viewModel.fiveHourLamps
-        let oneHourLamps = await viewModel.oneHourLamps
-        let fiveMinuteLamps = await viewModel.fiveMinuteLamps
-        let oneMinuteLamps = await viewModel.oneMinuteLamps
-        let isSecondsLampIluminated = await viewModel.isSecondsLampIluminated
+        updateViewModel(for: DateComponents(hour: 12, minute: 0, second: 0))
+        let fiveHourLamps = viewModel.fiveHourLamps
+        let oneHourLamps = viewModel.oneHourLamps
+        let fiveMinuteLamps =  viewModel.fiveMinuteLamps
+        let oneMinuteLamps =  viewModel.oneMinuteLamps
+        let isSecondsLampIluminated =  viewModel.isSecondsLampIluminated
         
         XCTAssertEqual(fiveHourLamps, [.red, .red, .off, .off])
         XCTAssertEqual(oneHourLamps, [.red, .red, .off, .off])
@@ -107,12 +107,12 @@ final class BerlinClockViewModelTests: XCTestCase {
         XCTAssertEqual(oneMinuteLamps, [.off, .off,.off, .off])
         XCTAssertTrue(isSecondsLampIluminated)
         
-        await updateViewModel(for: DateComponents(hour: 13, minute: 31, second: 59))
-        let newFiveHourLamps = await viewModel.fiveHourLamps
-        let newOneHourLamps = await viewModel.oneHourLamps
-        let newFiveMinuteLamps = await viewModel.fiveMinuteLamps
-        let newOneMinuteLamps = await viewModel.oneMinuteLamps
-        let newIsSecondsLampIlluminated = await viewModel.isSecondsLampIluminated
+        updateViewModel(for: DateComponents(hour: 13, minute: 31, second: 59))
+        let newFiveHourLamps =  viewModel.fiveHourLamps
+        let newOneHourLamps =  viewModel.oneHourLamps
+        let newFiveMinuteLamps =  viewModel.fiveMinuteLamps
+        let newOneMinuteLamps =  viewModel.oneMinuteLamps
+        let newIsSecondsLampIlluminated =  viewModel.isSecondsLampIluminated
         
         XCTAssertEqual(newFiveHourLamps, [.red, .red, .off, .off])
         XCTAssertEqual(newOneHourLamps, [.red, .red, .red, .off])
@@ -123,7 +123,7 @@ final class BerlinClockViewModelTests: XCTestCase {
     
     // MARK: - DateFormatter
     
-    func test_formattedTime_returns_the_correct_time_format() async {
+    func test_formattedTime_returns_the_correct_time_format() {
         let dateComponents = DateComponents(year: 2026,
                                             month: 0,
                                             day: 13,
@@ -132,8 +132,8 @@ final class BerlinClockViewModelTests: XCTestCase {
                                             second: 3)
         let date = Calendar.current.date(from: dateComponents)!
         
-        let timeString = await viewModel.formattedTime(for: date)
+        viewModel.update(with: date)
         
-        XCTAssertEqual(timeString, "09:58")
+        XCTAssertEqual(viewModel.digitalTime, "09:58")
     }
 }
