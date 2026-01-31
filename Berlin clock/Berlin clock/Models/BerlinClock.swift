@@ -42,17 +42,10 @@ struct BerlinClock {
     func fiveMinutesRow(minutes: Int) -> [Lamp] {
         let numberOfActiveLamps = min(minutes / 5, numberOfFiveMinuteLamps)
         
-        let lamps = lampsRow(totalLamps: numberOfFiveMinuteLamps,
+        return lampsRow(totalLamps: numberOfFiveMinuteLamps,
                              totalActiveLamps: numberOfActiveLamps,
                              lampColor: .yellow,
                              specialColor: .red)
-        
-//        return lamps.enumerated().map { index, lamp in
-//            // make every third lamp red when it's on
-//            (index + 1) % 3 == 0 && lamp.isOn ? .red : lamp
-//        }
-        
-        return lamps
     }
     
     func oneMinutesRow(minutes: Int) -> [Lamp] {
@@ -65,9 +58,7 @@ struct BerlinClock {
     
     // MARK: - Helper method to create rows
     
-    private func lampsRow(totalLamps: Int, totalActiveLamps: Int, lampColor: Lamp, specialColor: Lamp? = nil) -> [Lamp] {
-//        return (0..<totalLamps).map { $0 < totalActiveLamps ? lampColor : .off }
-        
+    private func lampsRow(totalLamps: Int, totalActiveLamps: Int, lampColor: Lamp, specialColor: Lamp? = nil) -> [Lamp] {        
         (0..<totalLamps).map { index in
             if (index + 1) % 3 == 0 && index < totalActiveLamps {
                 guard let specialColor else { return lampColor }
